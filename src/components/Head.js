@@ -9,7 +9,7 @@ const Head = () => {
 
   return (
     <div className="flex h-14 shadow-lg justify-between mx-2 mb-2">
-      <div className="flex items-center gap-5 py-3 px-6 cursor-pointer">
+      <div className="flex items-center gap-5 py-3 px-6 pointer">
         <img
           onClick={() => toggleMenuHandler()}
           className="w-7"

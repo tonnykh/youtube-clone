@@ -42,7 +42,7 @@ function App() {
          *       VideCard
          *
          *
-         */}{" "}
+         */}
       </div>
     </Provider>
   );
