@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { closeButtonList } from "../utils/appSlice";
 
 const SearchResultVideoCard = ({ info }) => {
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails } = snippet;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(closeButtonList());
+  });
 
   return (
     <div className="flex w-[1040px] mx-auto h-48 m-2">

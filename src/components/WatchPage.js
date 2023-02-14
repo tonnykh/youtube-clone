@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 
@@ -9,8 +9,10 @@ const WatchPage = () => {
 
   const dispatch = useDispatch();
 
+  const isMenuClicked = useSelector((store) => store.app.isMenuClicked);
+
   useEffect(() => {
-    dispatch(closeMenu());
+    !isMenuClicked && dispatch(closeMenu());
   });
 
   return (

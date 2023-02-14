@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { toggleMenu } from "../utils/appSlice";
+import { toggleMenu, defaultMenuOff } from "../utils/appSlice";
 import {
   YOUTUBE_SEARCH_API,
   YOUTUBE_SEARCH_VIDEO_ID_API,
@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import store from "../utils/store";
 import { cacheResults } from "../utils/searchSlice";
 import { addSearchVideos } from "../utils/videoSlice";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,7 +19,6 @@ const Head = () => {
   const dispatch = useDispatch();
 
   const searchCache = useSelector((store) => store.search);
-
   console.log(searchCache, "CACHE RESULT");
 
   useEffect(() => {
@@ -29,7 +29,6 @@ const Head = () => {
         getSearchSuggestions();
       }
     }, 200);
-
     return () => {
       clearTimeout(timer);
     };
@@ -39,9 +38,7 @@ const Head = () => {
     console.log(searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
-
     setSuggestions(json[1]);
-
     //update cache
     dispatch(
       cacheResults({
@@ -49,6 +46,8 @@ const Head = () => {
       })
     );
   };
+
+  console.log(searchQuery === true, "QUERY");
 
   const displaySearchVideo = () => {
     getSearchVideos();
@@ -62,7 +61,10 @@ const Head = () => {
     dispatch(addSearchVideos(json.items));
   };
 
-  const toggleMenuHandler = () => dispatch(toggleMenu());
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+    dispatch(defaultMenuOff());
+  };
 
   return (
     <div className="flex h-14 shadow-lg justify-between mx-2 mb-2">
@@ -74,12 +76,11 @@ const Head = () => {
           alt="menu"
         ></img>
 
-
-          <img
-            className="h-5 cursor-pointer"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1200px-YouTube_Logo_2017.svg.png"
-            alt="youtube-logo"
-          ></img>
+        <img
+          className="h-5 cursor-pointer"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1200px-YouTube_Logo_2017.svg.png"
+          alt="youtube-logo"
+        ></img>
       </div>
 
       <div className="w-[39rem] z-10">
@@ -93,12 +94,15 @@ const Head = () => {
             onFocus={() => setShowSuggeations(true)}
             onBlur={() => setShowSuggeations(false)}
           />
-          <button
-            className="self-center border rounded-r-full py-[0.453rem] px-5 bg-gray-50"
-            onClick={() => displaySearchVideo()}
-          >
-            🔍
-          </button>
+
+          <Link to="result">
+            <button
+              className="self-center border rounded-r-full py-[0.453rem] px-5 bg-gray-50"
+              onClick={() => displaySearchVideo()}
+            >
+              🔍
+            </button>
+          </Link>
         </div>
         {suggestions.length !== 0 && showSuggeations && (
           <div className="bg-white w-3/4 rounded-xl shadow-lg border border-gray-100 py-3">

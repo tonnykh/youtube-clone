@@ -6,7 +6,8 @@ import {
 } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { openMenu } from "../utils/appSlice";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -14,6 +15,13 @@ const VideoContainer = () => {
 
   const searchVideos = useSelector((store) => store.video);
   const searchVideosArray = Object.values(searchVideos);
+
+  const dispatch = useDispatch();
+  const isMenuClicked = useSelector((store) => store.app.isMenuClicked);
+
+  useEffect(() => {
+    !isMenuClicked && dispatch(openMenu());
+  });
 
   useEffect(() => {
     setVideoIdList(
@@ -51,7 +59,7 @@ const VideoContainer = () => {
 
   return (
     <div className="flex flex-wrap">
-      {searchVideosArray.length === 0
+      {searchVideosArray.length !== 0
         ? videos.map((video) => (
             <Link key={video?.id} to={"/watch?v=" + video?.id}>
               <VideoCard info={video} />

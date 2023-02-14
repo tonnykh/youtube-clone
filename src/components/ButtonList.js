@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Button from "./Button";
 
 const list = [
@@ -16,6 +17,12 @@ const list = [
 ];
 
 const ButtonList = () => {
+  const isButtonListVisible = useSelector(
+    (store) => store.app.isButtonListVisible
+  );
+
+  if (!isButtonListVisible) return;
+
   return (
     <div className="flex mx-4">
       {list.map((each) => (
