@@ -5,6 +5,8 @@ import { YOUTUBE_SEARCH_API } from "../utils/constants";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggeations, setShowSuggeations] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => getSearchSuggestions(), 200);
@@ -20,9 +22,8 @@ const Head = () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
 
-    // console.log(json[1]);
+    setSuggestions(json[1]);
   };
-
 
   const dispatch = useDispatch();
 
@@ -47,17 +48,32 @@ const Head = () => {
         </a>
       </div>
 
-      <div className="flex w-1/2 py-2">
-        <input
-          className="border w-3/4 rounded-l-full border-r-white pl-4"
-          type="text"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button className="self-center border rounded-r-full py-[0.453rem] px-5 bg-gray-50">
-          🔍
-        </button>
+      <div className="w-[39rem] z-10">
+        <div className="flex pt-2 pb-1">
+          <input
+            className="border w-3/4 rounded-l-full border-r-white pl-4"
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggeations(true)}
+            onBlur={() => setShowSuggeations(false)}
+          />
+          <button className="self-center border rounded-r-full py-[0.453rem] px-5 bg-gray-50">
+            🔍
+          </button>
+        </div>
+        {suggestions.length !== 0 && showSuggeations && (
+          <div className="bg-white w-3/4 rounded-xl shadow-lg border border-gray-100 py-3">
+            <ul className="">
+              {suggestions.map((suggestion) => (
+                <li className="py-1 px-4 hover:bg-gray-100" key={suggestion}>
+                  🔍 {suggestion}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div className="flex py-3 px-6 pr-12">
