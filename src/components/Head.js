@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import {
+  YOUTUBE_SEARCH_API,
+  YOUTUBE_SEARCH_VIDEO_ID_API,
+} from "../utils/constants";
 import { useSelector } from "react-redux";
 import store from "../utils/store";
 import { cacheResults } from "../utils/searchSlice";
+import { addSearchVideos } from "../utils/videoSlice";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,6 +18,8 @@ const Head = () => {
   const dispatch = useDispatch();
 
   const searchCache = useSelector((store) => store.search);
+
+  console.log(searchCache, "CACHE RESULT");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -33,6 +39,7 @@ const Head = () => {
     console.log(searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
+
     setSuggestions(json[1]);
 
     //update cache
@@ -41,6 +48,18 @@ const Head = () => {
         [searchQuery]: json[1],
       })
     );
+  };
+
+  const displaySearchVideo = () => {
+    getSearchVideos();
+  };
+
+  const getSearchVideos = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_VIDEO_ID_API(searchQuery));
+    const json = await data.json();
+
+    console.log(json.items, "FETCH VIDEO RESULTS");
+    dispatch(addSearchVideos(json.items));
   };
 
   const toggleMenuHandler = () => dispatch(toggleMenu());
@@ -75,7 +94,10 @@ const Head = () => {
             onFocus={() => setShowSuggeations(true)}
             onBlur={() => setShowSuggeations(false)}
           />
-          <button className="self-center border rounded-r-full py-[0.453rem] px-5 bg-gray-50">
+          <button
+            className="self-center border rounded-r-full py-[0.453rem] px-5 bg-gray-50"
+            onClick={() => displaySearchVideo()}
+          >
             🔍
           </button>
         </div>
