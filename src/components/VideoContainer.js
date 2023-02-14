@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SearchResultVideoCard from "./SearchResultVideoCard";
 import {
   YOUTUBE_SEARCH_VIDEO_API,
   YOUTUBE_VIDEOS_API,
@@ -26,14 +27,12 @@ const VideoContainer = () => {
     getSearchVideos();
   }, [videoIdList]);
 
-
   const getSearchVideos = async () => {
     const data = await fetch(YOUTUBE_SEARCH_VIDEO_API(videoIdList.toString()));
     const json = await data.json();
 
     setVideos(json.items);
   };
-
 
   useEffect(() => {
     getVideos();
@@ -48,13 +47,19 @@ const VideoContainer = () => {
 
   if (videos === undefined) return null;
 
+  console.log(searchVideosArray.length, "ARRAY");
+
   return (
     <div className="flex flex-wrap">
-      {videos.map((video) => (
-        <Link key={video?.id} to={"/watch?v=" + video?.id}>
-          <VideoCard info={video} />{" "}
-        </Link>
-      ))}
+      {searchVideosArray.length === 0
+        ? videos.map((video) => (
+            <Link key={video?.id} to={"/watch?v=" + video?.id}>
+              <VideoCard info={video} />
+            </Link>
+          ))
+        : videos.map((video) => (
+            <SearchResultVideoCard key={video.id} info={video} />
+          ))}
     </div>
   );
 };
