@@ -5,14 +5,10 @@ import { useSearchParams } from "react-router-dom";
 
 const WatchPage = () => {
   let [searchParams] = useSearchParams();
-  console.log(searchParams.get("v"));
-
   const dispatch = useDispatch();
 
-  const isMenuClicked = useSelector((store) => store.app.isMenuClicked);
-
   useEffect(() => {
-    !isMenuClicked && dispatch(closeMenu());
+    dispatch(closeMenu());
   });
 
   return (

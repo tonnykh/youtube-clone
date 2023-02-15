@@ -7,7 +7,7 @@ import store from "./utils/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
-import SearchResultPage from "./components/SearchResultPage";
+import SearchResultPage from "./components/SearchResultVideoContainer";
 
 const AppLayout = () => {
   return (

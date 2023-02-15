@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu, defaultMenuOff } from "../utils/appSlice";
-import {
-  YOUTUBE_SEARCH_API,
-  YOUTUBE_SEARCH_VIDEO_ID_API,
-} from "../utils/constants";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { useSelector } from "react-redux";
-import store from "../utils/store";
 import { cacheResults } from "../utils/searchSlice";
-import { addSearchVideos } from "../utils/videoSlice";
 import { Link } from "react-router-dom";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggeations, setShowSuggeations] = useState(false);
-
   const dispatch = useDispatch();
-
   const searchCache = useSelector((store) => store.search);
   console.log(searchCache, "CACHE RESULT");
 
@@ -47,20 +40,6 @@ const Head = () => {
     );
   };
 
-  console.log(searchQuery === true, "QUERY");
-
-  const displaySearchVideo = () => {
-    getSearchVideos();
-  };
-
-  const getSearchVideos = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_VIDEO_ID_API(searchQuery));
-    const json = await data.json();
-
-    console.log(json.items, "FETCH VIDEO RESULTS");
-    dispatch(addSearchVideos(json.items));
-  };
-
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
     dispatch(defaultMenuOff());
@@ -75,12 +54,13 @@ const Head = () => {
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEX///8jHyAgHB0OBQgMAAWlpKQpJSaenZ309PUAAAAIAAD8/Pz5+fna2tqop6dvbW1oZmevrq4tKivFxMQYExRiYGC+vr7Dc4WrAAABB0lEQVR4nO3cS3LCMBAFQGIIIBPbhN/9jxqSyiIsTUnlydB9g1eSNV5MvdUKAAAAAAAAAAAAAAAAXtEwvscwDk3yHabSb2Loy/TRIOHUv8XRH+sHHMrSqR6U+hd1jHSE90P8lHC2/Lc0/0vzMy3WMdynxaFBwu+Jv4uh0cQHAAAAAAAAAIB59jG0ijdcT9sYTtcmK0PncumiuJRz/YD7bbf0ut4f3br+GvQt2PblrXrC3WbpUA/6sXrC/GeY/zvM/5aGmofHZiu0S//M/GoVDwAAAAAAAAAAZsjeuRerN1HL7hPy95fm76DNnzD/Lc3/0rxAJ3v+Xn0AAAAAAAAAAAAAAAD4T74AYhs1O+vt3ioAAAAASUVORK5CYII="
           alt="menu"
         ></img>
-
-        <img
-          className="h-5 cursor-pointer"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1200px-YouTube_Logo_2017.svg.png"
-          alt="youtube-logo"
-        ></img>
+        <Link to="/">
+          <img
+            className="h-5 cursor-pointer"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1200px-YouTube_Logo_2017.svg.png"
+            alt="youtube-logo"
+          ></img>
+        </Link>
       </div>
 
       <div className="w-[39rem] z-10">
@@ -95,11 +75,8 @@ const Head = () => {
             onBlur={() => setShowSuggeations(false)}
           />
 
-          <Link to="result">
-            <button
-              className="self-center border rounded-r-full py-[0.453rem] px-5 bg-gray-50"
-              onClick={() => displaySearchVideo()}
-            >
+          <Link to={"result?search_query=" + searchQuery}>
+            <button className="self-center border rounded-r-full py-[0.453rem] px-5 bg-gray-50">
               🔍
             </button>
           </Link>
