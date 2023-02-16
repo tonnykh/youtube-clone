@@ -27,11 +27,11 @@ const WatchPage = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
-        {/* <VideoDetailsContainer /> */}
+        <VideoDetailsContainer />
         <CommentsContainer />
       </div>
 
-      {/* <SuggestionVideoContainer /> */}
+      <SuggestionVideoContainer />
     </div>
   );
 };
