@@ -37,10 +37,10 @@ export const YOUTUBE_CHANNEL_DETAILS_API = (channelId) =>
   "&key=" +
   GOOGLE_API_KEY;
 
-// https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=PFK4SWZXzlU&type=video&key=AIzaSyAnhd3fd2bt4m5PJjwMJxZLQJmDBrhzoPs
+export const YOUTUBE_COMMENTS_API = (videoId) =>
+  "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=" +
+  videoId +
+  "&key=" +
+  GOOGLE_API_KEY;
 
-// https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=Ks-_Mh1QhMc&type=video&key=[YOUR_API_KEY]
-
-//  'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc&key=[YOUR_API_KEY]' \
-
-//https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw&key=AIzaSyBfEgTj9A3C3wkWjaPczrKCZfPi8lcIOnU
+//https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=_VB39Jo8mAQ&key=AIzaSyClu2V_22XpCG2GTe1euD35_Mh5bn4eTjA

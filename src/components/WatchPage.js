@@ -4,6 +4,7 @@ import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import SuggestionVideoContainer from "./SuggestionVideoContainer";
 import VideoDetailsContainer from "./VideoDetails";
+import CommentsContainer from "./CommentsContainer ";
 
 const WatchPage = () => {
   let [searchParams] = useSearchParams();
@@ -26,10 +27,11 @@ const WatchPage = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
-        <VideoDetailsContainer />
+        {/* <VideoDetailsContainer /> */}
+        <CommentsContainer />
       </div>
 
-      <SuggestionVideoContainer />
+      {/* <SuggestionVideoContainer /> */}
     </div>
   );
 };
