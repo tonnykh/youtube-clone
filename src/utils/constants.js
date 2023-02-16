@@ -1,7 +1,7 @@
-const GOOGLE_API_KEY = "AIzaSyAnhd3fd2bt4m5PJjwMJxZLQJmDBrhzoPs";
+const GOOGLE_API_KEY = "AIzaSyBfEgTj9A3C3wkWjaPczrKCZfPi8lcIOnU";
 
 export const YOUTUBE_VIDEOS_API =
-  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=1&regionCode=IN&key=" +
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=2&regionCode=IN&key=" +
   GOOGLE_API_KEY;
 
 export const YOUTUBE_SEARCH_API =
@@ -18,3 +18,13 @@ export const YOUTUBE_SEARCH_VIDEO_API = (videoIdList) =>
   videoIdList.toString() +
   "&key=" +
   GOOGLE_API_KEY;
+
+export const YOUTUBE_RELATED_VIDEOS_ID_API = (videoId) =>
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&relatedToVideoId=" +
+  videoId +
+  "&type=video&key=" +
+  GOOGLE_API_KEY;
+
+// https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=PFK4SWZXzlU&type=video&key=AIzaSyAnhd3fd2bt4m5PJjwMJxZLQJmDBrhzoPs
+
+// https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=Ks-_Mh1QhMc&type=video&key=[YOUR_API_KEY]

@@ -13,6 +13,8 @@ const SearchResultVideoContainer = () => {
   const [videoIdList, setVideoIdList] = useState([]);
   const [searchVideosResult, setSearchVideosResult] = useState([]);
 
+
+  console.log(videoIdList);
   /** Get video Id **/
   useEffect(() => {
     getSearchVideosWithId();
