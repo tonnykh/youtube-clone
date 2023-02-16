@@ -20,7 +20,7 @@ export const YOUTUBE_SEARCH_VIDEO_API = (videoIdList) =>
   GOOGLE_API_KEY;
 
 export const YOUTUBE_RELATED_VIDEOS_ID_API = (videoId) =>
-  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&relatedToVideoId=" +
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&relatedToVideoId=" +
   videoId +
   "&type=video&key=" +
   GOOGLE_API_KEY;

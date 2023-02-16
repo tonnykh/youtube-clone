@@ -25,7 +25,7 @@ const WatchPage = () => {
         allowFullScreen
       ></iframe>
 
-      <SuggestionVideoContainer videoId={searchParams.get("v")} />
+      <SuggestionVideoContainer />
     </div>
   );
 };

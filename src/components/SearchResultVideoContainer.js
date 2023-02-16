@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import SearchResultVideoCard from "./SearchResultVideoCard";
 import {
   YOUTUBE_SEARCH_VIDEO_API,
@@ -12,7 +12,6 @@ const SearchResultVideoContainer = () => {
   const [videosWithId, setVideosWithId] = useState([]);
   const [videoIdList, setVideoIdList] = useState([]);
   const [searchVideosResult, setSearchVideosResult] = useState([]);
-
 
   console.log(videoIdList);
   /** Get video Id **/
@@ -53,9 +52,11 @@ const SearchResultVideoContainer = () => {
   };
 
   return (
-    <div>
+    <div className="pl-16">
       {searchVideosResult.map((video) => (
-        <SearchResultVideoCard key={video.id} info={video} />
+        <Link key={video?.id} to={"/watch?v=" + video?.id}>
+          <SearchResultVideoCard key={video.id} info={video} />
+        </Link>
       ))}
     </div>
   );

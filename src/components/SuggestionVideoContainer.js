@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import SuggestionVideoCard from "./SuggestionVideoCard";
+import { useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   YOUTUBE_RELATED_VIDEOS_ID_API,
   YOUTUBE_SEARCH_VIDEO_API,
 } from "../utils/constants";
 
-const SuggestionVideoContainer = ({ videoId }) => {
-  console.log(videoId, "--- ID");
+const SuggestionVideoContainer = () => {
+  let [searchParams] = useSearchParams();
 
   const [relatedVideoIdList, setRelatedVideoIdList] = useState([]);
   const [relatedVideos, setRelatedVideos] = useState([]);
@@ -15,11 +17,13 @@ const SuggestionVideoContainer = ({ videoId }) => {
 
   /** Get video id list **/
   useEffect(() => {
-    getRelatedVideosIdList(videoId);
+    getRelatedVideosIdList(searchParams.get("v"));
   }, []);
 
   const getRelatedVideosIdList = async () => {
-    const data = await fetch(YOUTUBE_RELATED_VIDEOS_ID_API(videoId));
+    const data = await fetch(
+      YOUTUBE_RELATED_VIDEOS_ID_API(searchParams.get("v"))
+    );
     const json = await data.json();
     setRelatedVideoIdList(
       json.items
@@ -45,7 +49,9 @@ const SuggestionVideoContainer = ({ videoId }) => {
   return (
     <div className="py-4">
       {relatedVideos.map((video) => (
-        <SuggestionVideoCard key={video.id} info={video} />
+        <Link key={video?.id} to={"/watch?v=" + video?.id}>
+          <SuggestionVideoCard key={video.id} info={video} />
+        </Link>
       ))}
     </div>
   );
