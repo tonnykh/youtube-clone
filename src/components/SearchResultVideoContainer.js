@@ -12,33 +12,42 @@ const SearchResultVideoContainer = () => {
   const [videosWithId, setVideosWithId] = useState([]);
   const [videoIdList, setVideoIdList] = useState([]);
   const [searchVideosResult, setSearchVideosResult] = useState([]);
+  const [nextToken, setNextToken] = useState("");
+  const [page, setPage] = useState(1);
+  const [callOnce, setCallOnce] = useState(true);
 
-  console.log(videoIdList);
+  console.log(videoIdList, page, "LIST");
   /** Get video Id **/
   useEffect(() => {
     getSearchVideosWithId();
-  }, [searchQuery]);
+  }, [page]);
 
   const getSearchVideosWithId = async () => {
     const data = await fetch(
-      YOUTUBE_SEARCH_VIDEO_ID_API(searchParams.get("search_query"))
+      YOUTUBE_SEARCH_VIDEO_ID_API(searchParams.get("search_query"), nextToken)
     );
     const json = await data.json();
+    console.log(json);
+
     setVideosWithId(json.items);
+    setNextToken(json.nextPageToken);
   };
 
   /** Filter into id list **/
   useEffect(() => {
     filterVideoIdList();
-  }, [videosWithId]);
+  }, [nextToken]);
 
   const filterVideoIdList = () => {
-    setVideoIdList(
-      videosWithId
-        ?.map((searchVideo) => searchVideo?.id?.videoId)
-        .filter((item) => item !== undefined)
-    );
+    setVideoIdList([
+      ...new Set(
+        videosWithId
+          ?.map((searchVideo) => searchVideo?.id?.videoId)
+          .filter((item) => item !== undefined)
+      ),
+    ]);
   };
+  //[...new Set(names)]
 
   /** Get video with details **/
   useEffect(() => {
@@ -46,16 +55,35 @@ const SearchResultVideoContainer = () => {
   }, [videoIdList]);
 
   const getSearchVideos = async () => {
+    if (!videoIdList.length) {
+      return;
+    }
     const data = await fetch(YOUTUBE_SEARCH_VIDEO_API(videoIdList.toString()));
     const json = await data.json();
-    setSearchVideosResult(json.items);
+    console.log(json);
+    setSearchVideosResult([...searchVideosResult, ...json.items]);
+    // setNextToken(json)
   };
+
+  /** Is bottom ? **/
+  useEffect(() => {
+    function handleScroll() {
+      const isBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+      if (isBottom) {
+        setPage((prevPage) => prevPage + 1);
+        // getSearchVideosWithId();
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="pl-16">
-      {searchVideosResult.map((video) => (
+      {searchVideosResult.map((video, index) => (
         <Link key={video?.id} to={"/watch?v=" + video?.id}>
-          <SearchResultVideoCard key={video.id} info={video} />
+          <SearchResultVideoCard info={video} />
         </Link>
       ))}
     </div>

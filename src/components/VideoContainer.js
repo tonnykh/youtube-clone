@@ -8,6 +8,10 @@ import { openMenu } from "../utils/appSlice";
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const dispatch = useDispatch();
+  const [nextToken, setNextToken] = useState("");
+  const [page, setPage] = useState(1);
+
+  console.log(nextToken, "NEXT");
 
   useEffect(() => {
     dispatch(openMenu());
@@ -15,18 +19,31 @@ const VideoContainer = () => {
 
   useEffect(() => {
     getVideos();
-  }, []);
+  }, [page]);
 
   const getVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEOS_API);
+    const data = await fetch(YOUTUBE_VIDEOS_API(nextToken));
     const json = await data.json();
-    setVideos(json.items);
+    setVideos([...videos, ...json.items]);
+    setNextToken(json.nextPageToken);
   };
+
+  useEffect(() => {
+    function handleScroll() {
+      const isBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+      if (isBottom) {
+        setPage((prevPage) => prevPage + 1);
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   if (videos === undefined) return null;
 
   return (
-    <div className="flex flex-wrap">
+    <div className=" flex-wrap">
       {videos.map((video) => (
         <Link key={video?.id} to={"/watch?v=" + video?.id}>
           <VideoCard info={video} />

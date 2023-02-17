@@ -6,10 +6,8 @@ import {
 } from "../utils/constants";
 
 const VideoDetails = () => {
-
-    let [searchParams] = useSearchParams();
-    const videoId = searchParams.get("v");
-
+  let [searchParams] = useSearchParams();
+  const videoId = searchParams.get("v");
 
   const [videoDetails, setVideoDetails] = useState();
   const [channelDetails, setChannelDetails] = useState();
@@ -51,6 +49,9 @@ const VideoDetails = () => {
         </li>
       </ul>
       <div className="text-sm font-bold">{statistics.viewCount} views</div>
+      <div className="text-base font-bold py-2">
+        {statistics.commentCount} Comments :
+      </div>
     </div>
   );
 };

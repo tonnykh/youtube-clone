@@ -1,17 +1,23 @@
-const GOOGLE_API_KEY = "AIzaSyASMnObZc7n08rqaYmEN0EnDQlUsgnZdNA";
+const GOOGLE_API_KEY = "AIzaSyAM5dpsRtU491HWWIpLoErPhgGVDsUHyAY";
 
-export const YOUTUBE_VIDEOS_API =
-  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=2&regionCode=IN&key=" +
+export const YOUTUBE_VIDEOS_API = (nextToken) =>
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&pageToken=" +
+  nextToken +
+  "&maxResults=4&regionCode=IN&key=" +
   GOOGLE_API_KEY;
 
 export const YOUTUBE_SEARCH_API =
   "https://cors-anywhere.herokuapp.com/http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
-export const YOUTUBE_SEARCH_VIDEO_ID_API = (search) =>
-  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=" +
+export const YOUTUBE_SEARCH_VIDEO_ID_API = (search, nextToken) =>
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" +
   search +
+  "&pageToken=" +
+  nextToken +
   "&key=" +
   GOOGLE_API_KEY;
+
+//https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=HXwPcfH1Ejw,a5e7yEhbGhk,nmnaI3TGtBo,nbfWVn9waM8,GKj9rDXZDn8&key=AIzaSyATlF26iF-kjV4MgmcSCtZpAJDyrHFe_J8
 
 export const YOUTUBE_SEARCH_VIDEO_API = (videoIdList) =>
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=" +
@@ -37,10 +43,14 @@ export const YOUTUBE_CHANNEL_DETAILS_API = (channelId) =>
   "&key=" +
   GOOGLE_API_KEY;
 
-export const YOUTUBE_COMMENTS_API = (videoId) =>
-  "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=" +
+export const YOUTUBE_COMMENTS_API = (videoId, nextToken) =>
+  "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&order=relevance&videoId=" +
   videoId +
-  "&key=" +
+  "&pageToken=" +
+  nextToken +
+  "&prettyPrint=true&key=" +
   GOOGLE_API_KEY;
 
 //https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=_VB39Jo8mAQ&key=AIzaSyClu2V_22XpCG2GTe1euD35_Mh5bn4eTjA
+
+//https://www.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&order=relevance&videoId=VQCfbmhIjzo&prettyPrint=true&key=AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s
