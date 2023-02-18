@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SidebarSmall from "./SidebarSmall";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  let location = (useLocation());
 
-  if (!isMenuOpen && window.location.pathname === "/") return <SidebarSmall />;
+  if (!isMenuOpen && location.pathname === "/") return <SidebarSmall />;
   if (!isMenuOpen) return;
 
   return (
-    <div className="p-5 shadow-lg pr-20">
+    <div className="p-5 shadow-lg pr-20 z-10 bg-white">
       <ul className="pl-5">
         <Link to="/">
           <li>Home</li>

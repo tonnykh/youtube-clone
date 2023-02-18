@@ -16,7 +16,7 @@ const VideoContainer = () => {
 
   useEffect(() => {
     dispatch(openMenu());
-  });
+  }, []);
 
   useEffect(() => {
     getVideos();
