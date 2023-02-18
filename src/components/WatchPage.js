@@ -12,7 +12,7 @@ const WatchPage = () => {
 
   useEffect(() => {
     dispatch(closeMenu());
-  });
+  }, []);
 
   return (
     <div className="flex px-20 justify-center m">

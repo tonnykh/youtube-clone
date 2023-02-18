@@ -1,16 +1,16 @@
-const GOOGLE_API_KEY = "AIzaSyAM5dpsRtU491HWWIpLoErPhgGVDsUHyAY";
+const GOOGLE_API_KEY = "AIzaSyCDjtNxhpieK6HEzoDj5xuNFXtunKeypNs";
 
 export const YOUTUBE_VIDEOS_API = (nextToken) =>
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&pageToken=" +
   nextToken +
-  "&maxResults=4&regionCode=IN&key=" +
+  "&maxResults=3&regionCode=IN&key=" +
   GOOGLE_API_KEY;
 
 export const YOUTUBE_SEARCH_API =
   "https://cors-anywhere.herokuapp.com/http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const YOUTUBE_SEARCH_VIDEO_ID_API = (search, nextToken) =>
-  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" +
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" +
   search +
   "&pageToken=" +
   nextToken +

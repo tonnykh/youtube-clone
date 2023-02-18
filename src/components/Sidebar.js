@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import SidebarSmall from "./SidebarSmall";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
+  if (!isMenuOpen && window.location.pathname === "/") return <SidebarSmall />;
   if (!isMenuOpen) return;
 
   return (

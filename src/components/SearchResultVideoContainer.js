@@ -9,45 +9,33 @@ import {
 const SearchResultVideoContainer = () => {
   let [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search_query");
-  const [videosWithId, setVideosWithId] = useState([]);
   const [videoIdList, setVideoIdList] = useState([]);
   const [searchVideosResult, setSearchVideosResult] = useState([]);
   const [nextToken, setNextToken] = useState("");
   const [page, setPage] = useState(1);
-  const [callOnce, setCallOnce] = useState(true);
 
   console.log(videoIdList, page, "LIST");
+
+  console.log(searchVideosResult, "VIDEO SEARCH RESULTS");
   /** Get video Id **/
   useEffect(() => {
     getSearchVideosWithId();
-  }, [page]);
+  }, [searchQuery, page]);
 
   const getSearchVideosWithId = async () => {
     const data = await fetch(
-      YOUTUBE_SEARCH_VIDEO_ID_API(searchParams.get("search_query"), nextToken)
+      YOUTUBE_SEARCH_VIDEO_ID_API(searchQuery, nextToken)
     );
     const json = await data.json();
-    console.log(json);
-
-    setVideosWithId(json.items);
-    setNextToken(json.nextPageToken);
-  };
-
-  /** Filter into id list **/
-  useEffect(() => {
-    filterVideoIdList();
-  }, [nextToken]);
-
-  const filterVideoIdList = () => {
     setVideoIdList([
       ...new Set(
-        videosWithId
+        json.items
           ?.map((searchVideo) => searchVideo?.id?.videoId)
           .filter((item) => item !== undefined)
       ),
     ]);
+    setNextToken(json.nextPageToken);
   };
-  //[...new Set(names)]
 
   /** Get video with details **/
   useEffect(() => {
@@ -55,14 +43,9 @@ const SearchResultVideoContainer = () => {
   }, [videoIdList]);
 
   const getSearchVideos = async () => {
-    if (!videoIdList.length) {
-      return;
-    }
     const data = await fetch(YOUTUBE_SEARCH_VIDEO_API(videoIdList.toString()));
     const json = await data.json();
-    console.log(json);
     setSearchVideosResult([...searchVideosResult, ...json.items]);
-    // setNextToken(json)
   };
 
   /** Is bottom ? **/
@@ -72,7 +55,6 @@ const SearchResultVideoContainer = () => {
         window.innerHeight + window.scrollY >= document.body.offsetHeight;
       if (isBottom) {
         setPage((prevPage) => prevPage + 1);
-        // getSearchVideosWithId();
       }
     }
     window.addEventListener("scroll", handleScroll);

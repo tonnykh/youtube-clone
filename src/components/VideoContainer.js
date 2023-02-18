@@ -11,7 +11,8 @@ const VideoContainer = () => {
   const [nextToken, setNextToken] = useState("");
   const [page, setPage] = useState(1);
 
-  console.log(nextToken, "NEXT");
+  console.log(nextToken, "NEXT TOKEN MAIN CONTAINER");
+  console.log(videos, "Videos MAIN CONTAINER");
 
   useEffect(() => {
     dispatch(openMenu());
