@@ -1,4 +1,4 @@
-const GOOGLE_API_KEY = "AIzaSyCDjtNxhpieK6HEzoDj5xuNFXtunKeypNs";
+ const GOOGLE_API_KEY = "AIzaSyAJDO7pPLuGWnR_cPcVBYrQoMKg9VuJ7nI";
 
 export const YOUTUBE_VIDEOS_API = (nextToken) =>
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&pageToken=" +
@@ -10,12 +10,13 @@ export const YOUTUBE_SEARCH_API =
   "https://cors-anywhere.herokuapp.com/http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const YOUTUBE_SEARCH_VIDEO_ID_API = (search, nextToken) =>
-  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" +
-  search +
-  "&pageToken=" +
-  nextToken +
-  "&key=" +
-  GOOGLE_API_KEY;
+  // "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" +
+  // search +
+  // "&pageToken=" +
+  // nextToken +
+  // "&key=" +
+  // GOOGLE_API_KEY;
+"https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + search + "&pageToken=" + nextToken + "&type=video&fields=items%28id%28videoId%29%2C+snippet%28description%29%29%2CnextPageToken%2CpageInfo&key=" + GOOGLE_API_KEY;
 
 //https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=HXwPcfH1Ejw,a5e7yEhbGhk,nmnaI3TGtBo,nbfWVn9waM8,GKj9rDXZDn8&key=AIzaSyATlF26iF-kjV4MgmcSCtZpAJDyrHFe_J8
 
@@ -54,3 +55,8 @@ export const YOUTUBE_COMMENTS_API = (videoId, nextToken) =>
 //https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=_VB39Jo8mAQ&key=AIzaSyClu2V_22XpCG2GTe1euD35_Mh5bn4eTjA
 
 //https://www.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&order=relevance&videoId=VQCfbmhIjzo&prettyPrint=true&key=AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s
+
+
+// https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=cat&pageToken=CB4QAA&type=video&fields=items%28id%28videoId%29%2C+snippet%28description%29%29%2CnextPageToken&key=AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s
+
+// https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=cat&type=video&fields=items%28id%28videoId%29%2C+snippet%28description%29%29%2CnextPageToken%2CpageInfo&key=AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s

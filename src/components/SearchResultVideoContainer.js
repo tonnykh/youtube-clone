@@ -17,9 +17,20 @@ const SearchResultVideoContainer = () => {
   console.log(videoIdList, page, "LIST");
 
   console.log(searchVideosResult, "VIDEO SEARCH RESULTS");
+  console.log(nextToken, "TOKEN NAME");
+
+  /** Reset when Search query change **/
+  useEffect(() => {
+    setSearchVideosResult([]);
+    setVideoIdList([]);
+    setNextToken("");
+    setPage(1);
+  }, [searchQuery]);
+
   /** Get video Id **/
   useEffect(() => {
     getSearchVideosWithId();
+    console.log("CALL API -- 1");
   }, [searchQuery, page]);
 
   const getSearchVideosWithId = async () => {
@@ -27,19 +38,27 @@ const SearchResultVideoContainer = () => {
       YOUTUBE_SEARCH_VIDEO_ID_API(searchQuery, nextToken)
     );
     const json = await data.json();
-    setVideoIdList([
-      ...new Set(
-        json.items
-          ?.map((searchVideo) => searchVideo?.id?.videoId)
-          .filter((item) => item !== undefined)
-      ),
-    ]);
+    // setVideoIdList([
+    //   ...new Set(
+    //     json.items
+    //       ?.map((searchVideo) => searchVideo?.id?.videoId)
+    //       .filter((item) => item !== undefined)
+    //   ),
+    // ]);
+    console.log(json, "JSON");
+    setVideoIdList(
+      json.items
+        ?.map((searchVideo) => searchVideo?.id?.videoId)
+        .filter((item) => item !== undefined)
+    );
+
     setNextToken(json.nextPageToken);
   };
 
   /** Get video with details **/
   useEffect(() => {
     getSearchVideos();
+    console.log("CALL API -- 2");
   }, [videoIdList]);
 
   const getSearchVideos = async () => {
@@ -50,9 +69,13 @@ const SearchResultVideoContainer = () => {
 
   /** Is bottom ? **/
   useEffect(() => {
+    console.log("CALL API -- 3");
+
     function handleScroll() {
       const isBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight;
+
       if (isBottom) {
         setPage((prevPage) => prevPage + 1);
       }
@@ -64,7 +87,7 @@ const SearchResultVideoContainer = () => {
   return (
     <div className="pl-16">
       {searchVideosResult.map((video, index) => (
-        <Link key={video?.id} to={"/watch?v=" + video?.id}>
+        <Link key={video?.id + index} to={"/watch?v=" + video?.id}>
           <SearchResultVideoCard info={video} />
         </Link>
       ))}

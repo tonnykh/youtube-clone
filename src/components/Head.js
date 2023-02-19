@@ -45,6 +45,21 @@ const Head = () => {
     dispatch(defaultMenuOff());
   };
 
+  const handleKeyDown = (e) => {
+    console.log(e.key, "KEY");
+  };
+
+  const handleSubmit = (e) => {
+    e.prevent.default();
+    console.log("SUBMIT");
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchQuery(suggestion);
+    console.log(suggestion, "SUGGESTION NAME");
+    setShowSuggeations(false);
+  };
+
   return (
     <div className="flex h-14 shadow-lg justify-between mx-2 mb-2">
       <div className="flex items-center gap-5 py-3 px-5">
@@ -64,7 +79,7 @@ const Head = () => {
       </div>
 
       <div className="w-[39rem] z-10">
-        <div className="flex pt-2 pb-1">
+        <form className="flex pt-2 pb-1" onSubmit={(e) => handleSubmit()}>
           <input
             className="border w-3/4 rounded-l-full border-r-white pl-4"
             type="text"
@@ -72,7 +87,7 @@ const Head = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setShowSuggeations(true)}
-            onBlur={() => setShowSuggeations(false)}
+            onKeyDown={handleKeyDown}
           />
 
           <Link to={"result?search_query=" + searchQuery}>
@@ -80,14 +95,22 @@ const Head = () => {
               🔍
             </button>
           </Link>
-        </div>
+        </form>
         {suggestions.length !== 0 && showSuggeations && (
           <div className="bg-white w-3/4 rounded-xl shadow-lg border border-gray-100 py-3">
             <ul className="">
               {suggestions.map((suggestion) => (
-                <li className="py-1 px-4 hover:bg-gray-100" key={suggestion}>
-                  🔍 {suggestion}
-                </li>
+                <Link
+                  to={"result?search_query=" + searchQuery}
+                  key={suggestion}
+                >
+                  <li
+                    className="py-1 px-4 hover:bg-gray-100"
+                    onClick={() => handleSuggestionClick(suggestion)}
+                  >
+                    🔍 {suggestion}
+                  </li>
+                </Link>
               ))}
             </ul>
           </div>
