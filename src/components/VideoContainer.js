@@ -11,12 +11,9 @@ const VideoContainer = () => {
   const [nextToken, setNextToken] = useState("");
   const [page, setPage] = useState(1);
 
-  console.log(nextToken, "NEXT TOKEN MAIN CONTAINER");
-  console.log(videos, "Videos MAIN CONTAINER");
-
   useEffect(() => {
     dispatch(openMenu());
-  }, []);
+  });
 
   useEffect(() => {
     getVideos();
@@ -32,7 +29,9 @@ const VideoContainer = () => {
   useEffect(() => {
     function handleScroll() {
       const isBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight;
+
       if (isBottom) {
         setPage((prevPage) => prevPage + 1);
       }

@@ -92,16 +92,16 @@ const CommentsContainer = () => {
   const getComments = async () => {
     const data = await fetch(YOUTUBE_COMMENTS_API(videoId, nextToken));
     const json = await data.json();
-    console.log(json, "COMMENTS");
-
-    setComments([...comments, ...json.items]);
+    const newComments = [...comments, ...json.items];
+    setComments(newComments);
     setNextToken(json.nextPageToken);
   };
 
   useEffect(() => {
     function handleScroll() {
       const isBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight;
       if (isBottom) {
         setPage((prevPage) => prevPage + 1);
       }
