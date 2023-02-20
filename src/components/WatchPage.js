@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import SuggestionVideoContainer from "./SuggestionVideoContainer";
 import VideoDetailsContainer from "./VideoDetails";
 import CommentsContainer from "./CommentsContainer ";
+import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   let [searchParams] = useSearchParams();
@@ -35,7 +36,10 @@ const WatchPage = () => {
         <CommentsContainer />
       </div>
 
-      <SuggestionVideoContainer />
+      <div>
+        <LiveChat />
+        <SuggestionVideoContainer />
+      </div>
     </div>
   );
 };
