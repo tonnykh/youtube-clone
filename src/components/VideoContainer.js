@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { YOUTUBE_VIDEOS_API } from "../utils/constants";
+import {
+  YOUTUBE_VIDEOS_API,
+  YOUTUBE_CHANNEL_DETAILS_API,
+} from "../utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -10,6 +13,11 @@ const VideoContainer = () => {
   const dispatch = useDispatch();
   const [nextToken, setNextToken] = useState("");
   const [page, setPage] = useState(1);
+  const [channelIdList, setChannelIdList] = useState([]);
+  // const [channelDetails, setChannelDetails] = useState([]);
+  const [channelThumbnailList, setChannelThumbnailList] = useState([]);
+
+  console.log(channelThumbnailList, "ID DETAILS");
 
   useEffect(() => {
     dispatch(openMenu());
@@ -23,7 +31,26 @@ const VideoContainer = () => {
     const data = await fetch(YOUTUBE_VIDEOS_API(nextToken));
     const json = await data.json();
     setVideos([...videos, ...json.items]);
+
+    setChannelIdList(json.items?.map((video) => video?.snippet?.channelId));
+
     setNextToken(json.nextPageToken);
+  };
+
+  useEffect(() => {
+    if (channelIdList.length > 0) {
+      getChannelDetails();
+    }
+  }, [channelIdList]);
+
+  const getChannelDetails = async () => {
+    const data = await fetch(
+      YOUTUBE_CHANNEL_DETAILS_API(channelIdList.toString())
+    );
+    const json = await data.json();
+    setChannelThumbnailList(
+      json.items?.map((channel) => channel?.snippet?.thumbnails?.high?.url)
+    );
   };
 
   useEffect(() => {
@@ -40,13 +67,16 @@ const VideoContainer = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  if (videos === undefined) return null;
+  if (videos === undefined && channelThumbnailList.length === 0) return null;
 
   return (
     <div className=" flex-wrap">
-      {videos.map((video) => (
+      {videos.map((video, index) => (
         <Link key={video?.id} to={"/watch?v=" + video?.id}>
-          <VideoCard info={video} />
+          <VideoCard
+            info={video}
+            channelThumbnail={channelThumbnailList[index]}
+          />
         </Link>
       ))}
     </div>

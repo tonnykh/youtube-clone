@@ -14,10 +14,6 @@ const list = [
   "Bollywood Music",
   "Animated films",
   "Cricket",
-
-  "Bollywood1 Music",
-  "Animated1 films",
-  "Cricket1",
 ];
 
 const ButtonList = () => {

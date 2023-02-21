@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { numberFormatter, dateDiff } from "../utils/helper";
 import {
   YOUTUBE_VIDEO_DETAILS_API,
   YOUTUBE_CHANNEL_DETAILS_API,
@@ -45,12 +46,17 @@ const VideoDetails = () => {
       <ul>
         <li className="font-bold text-sm">{channelTitle}</li>
         <li className="text-gray-600 text-sm">
-          {channelDetails?.statistics?.subscriberCount} subscribers
+          {numberFormatter.format(channelDetails?.statistics?.subscriberCount)} subscribers
         </li>
       </ul>
-      <div className="text-sm font-bold">{statistics.viewCount} views</div>
+      <div className="text-sm font-bold">
+        {numberFormatter.format(statistics.viewCount)} views
+      </div>
+      <div>{dateDiff(snippet.publishedAt)}</div>
+      <div>{numberFormatter.format(statistics.likeCount)} Likes</div>
+
       <div className="text-base font-bold py-2">
-        {statistics.commentCount} Comments :
+        {Number(statistics.commentCount).toLocaleString()} Comments :
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import SearchResultVideoCard from "./SearchResultVideoCard";
 import {
   YOUTUBE_SEARCH_VIDEO_API,
   YOUTUBE_SEARCH_VIDEO_ID_API,
+  YOUTUBE_CHANNEL_DETAILS_API,
 } from "../utils/constants";
 
 const SearchResultVideoContainer = () => {
@@ -13,11 +14,16 @@ const SearchResultVideoContainer = () => {
   const [searchVideosResult, setSearchVideosResult] = useState([]);
   const [nextToken, setNextToken] = useState("");
   const [page, setPage] = useState(1);
+  const [channelIdList, setChannelIdList] = useState([]);
+  // const [channelDetails, setChannelDetails] = useState([]);
+  const [channelThumbnailList, setChannelThumbnailList] = useState([]);
+
+  // console.log(channelThumbnailList);
 
   console.log(videoIdList, page, "LIST");
 
   console.log(searchVideosResult, "VIDEO SEARCH RESULTS");
-  console.log(nextToken, "TOKEN NAME");
+  // console.log(nextToken, "TOKEN NAME");
 
   /** Reset when Search query change **/
   useEffect(() => {
@@ -65,6 +71,24 @@ const SearchResultVideoContainer = () => {
     const data = await fetch(YOUTUBE_SEARCH_VIDEO_API(videoIdList.toString()));
     const json = await data.json();
     setSearchVideosResult([...searchVideosResult, ...json.items]);
+    setChannelIdList(json.items?.map((video) => video?.snippet?.channelId));
+  };
+
+  /** channel thumbnail */
+  useEffect(() => {
+    if (channelIdList.length > 0) {
+      getChannelDetails();
+    }
+  }, [channelIdList]);
+
+  const getChannelDetails = async () => {
+    const data = await fetch(
+      YOUTUBE_CHANNEL_DETAILS_API(channelIdList.toString())
+    );
+    const json = await data.json();
+    setChannelThumbnailList(
+      json.items?.map((channel) => channel?.snippet?.thumbnails?.high?.url)
+    );
   };
 
   /** Is bottom ? **/
@@ -88,7 +112,10 @@ const SearchResultVideoContainer = () => {
     <div className="pl-16">
       {searchVideosResult.map((video, index) => (
         <Link key={video?.id + index} to={"/watch?v=" + video?.id}>
-          <SearchResultVideoCard info={video} />
+          <SearchResultVideoCard
+            info={video}
+            channelThumbnail={channelThumbnailList[index]}
+          />
         </Link>
       ))}
     </div>
