@@ -1,5 +1,5 @@
 import React from "react";
-import { numberFormatter } from "../utils/helper";
+import { numberFormatter, dateDiff } from "../utils/helper";
 
 const VideoCard = ({ info }) => {
   if (info === undefined) return null;
@@ -21,7 +21,9 @@ const VideoCard = ({ info }) => {
         <li className="text-gray-600 text-sm">
           {numberFormatter.format(statistics.viewCount)} views
         </li>
-        <li className="text-gray-600 text-sm">{snippet.publishedAt}</li>
+        <li className="text-gray-600 text-sm">
+          {dateDiff(snippet.publishedAt)}
+        </li>
       </ul>
     </div>
   );
