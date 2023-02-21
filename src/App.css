@@ -10,7 +10,7 @@
 
   .scrollbar::-webkit-scrollbar-track {
     border-radius: 100vh;
-    background:  #80808023;
+    background: #80808023;
   }
 
   .scrollbar::-webkit-scrollbar-thumb {
@@ -20,6 +20,6 @@
   }
 
   .scrollbar::-webkit-scrollbar-thumb:hover {
-    background:  rgba(90, 90, 90, 0.836);
+    background: rgba(90, 90, 90, 0.836);
   }
 }
