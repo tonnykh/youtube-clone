@@ -38,13 +38,13 @@ const LiveChat = () => {
 
   return (
     <>
-      <div className="w-full border border-black h-[484px] mt-4 bg-gray-200 overflow-y-scroll flex flex-col-reverse">
+      <div className="w-full border border-black h-[350px] mt-4 bg-gray-100 overflow-y-scroll flex flex-col-reverse scrollbar">
         {chatMessages.map((c, index) => (
           <ChatMessage key={index} name={c.name} message={c.message} />
         ))}
       </div>
       <form
-        className="w-full border border-black py-2"
+        className="w-full border border-x-black border-b-black py-2"
         onSubmit={(e) => handleSubmit(e)}
       >
         <div className="flex items-center ml-4">

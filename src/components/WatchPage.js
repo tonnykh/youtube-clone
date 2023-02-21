@@ -16,7 +16,7 @@ const WatchPage = () => {
   }, []);
 
   return (
-    <div className="flex px-20 justify-center m absolute -z-10">
+    <div className="flex px-20 justify-center m absolute -z-10 w-full">
       <div>
         <iframe
           className="px-6 py-4 "
