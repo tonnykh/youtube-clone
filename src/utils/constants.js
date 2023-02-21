@@ -1,5 +1,10 @@
  const GOOGLE_API_KEY = "AIzaSyAJDO7pPLuGWnR_cPcVBYrQoMKg9VuJ7nI";
 
+
+export const LIVE_CHAT_COUNT = 10;
+
+
+
 export const YOUTUBE_VIDEOS_API = (nextToken) =>
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&pageToken=" +
   nextToken +
