@@ -1,30 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ChatMessage from "./ChatMessage";
+import LiveChatMessage from "./LiveChatMessage";
 import { addMessage } from "../utils/chatSlice";
 import { faker } from "@faker-js/faker";
 
-const LiveChat = () => {
-  const [liveMessage, setLiveMessage] = useState("");
-  const [isLiveMessageVisible, setIsLiveMessageVisible] = useState(false);
-  const dispatch = useDispatch();
-
+const LiveChatList = () => {
   const chatMessages = useSelector((store) => store.chat.messages);
 
-  useEffect(() => {
-    const i = setInterval(() => {
-      // API pooling
-      console.log("---------API POOLING");
-      dispatch(
-        addMessage({
-          name: faker.name.fullName(),
-          message: faker.lorem.sentence(3),
-        })
-      );
-    }, 2000);
+  return (
+    <div className="w-full h-[350px] bg-gray-100 overflow-y-scroll flex flex-col-reverse px-2">
+      {chatMessages.map((c, index) => (
+        <LiveChatMessage key={index} name={c.name} message={c.message} />
+      ))}
+    </div>
+  );
+};
 
-    return () => clearInterval(i);
-  }, []);
+const LiveChatInput = () => {
+  const [liveMessage, setLiveMessage] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +31,52 @@ const LiveChat = () => {
     setLiveMessage("");
   };
 
+  return (
+    <form
+      className="w-full py-4 bg-gray-100 px-2"
+      onSubmit={(e) => handleSubmit(e)}
+    >
+      <div className="flex items-center ml-4">
+        <img
+          className="w-7"
+          src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+          alt="user-profile"
+        />
+        <span className="font-bold text-sm px-2">Tonny kh 🔴</span>
+      </div>
+      <input
+        type="text"
+        className="w-2/3 ml-8 border border-gray-200 px-5 py-2 rounded-full"
+        placeholder="Say something..."
+        value={liveMessage}
+        onChange={(e) => setLiveMessage(e.target.value)}
+      />
+      <button className="bg-gray-100 border border-gray-300  text-black ml-1 px-4 py-2 rounded-full font-bold hover:bg-gray-200 hover:border-gray-200">
+        send
+      </button>
+    </form>
+  );
+};
+
+const LiveChat = () => {
+  const [isLiveMessageVisible, setIsLiveMessageVisible] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const i = setInterval(() => {
+      // API pooling
+      console.log("---------API POOLING");
+      dispatch(
+        addMessage({
+          name: faker.name.fullName(),
+          message: faker.lorem.sentence(3),
+        })
+      );
+    }, 1500);
+
+    return () => clearInterval(i);
+  }, []);
+
   const handleChatDisplay = () => {
     setIsLiveMessageVisible(!isLiveMessageVisible);
     console.log("click");
@@ -45,38 +85,20 @@ const LiveChat = () => {
   return (
     <>
       {isLiveMessageVisible ? (
-        <div className="border border-gray-200 rounded-b-xl mt-4">
-          <div className="w-full h-[350px] bg-gray-100 overflow-y-scroll flex flex-col-reverse scrollbar">
-            {chatMessages.map((c, index) => (
-              <ChatMessage key={index} name={c.name} message={c.message} />
-            ))}
+        <div className=" rounded-xl mt-4 bg-gray-100 relative">
+          <div className="text-center py-2 font-bold border-b border-gray-300 mx-5">
+            Live Chat
           </div>
-          <form className="w-full py-4" onSubmit={(e) => handleSubmit(e)}>
-            <div className="flex items-center ml-4">
-              <img
-                className="w-7"
-                src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-                alt="user-profile"
-              />
-              <span className="font-bold text-sm px-2">Tonny kh</span>
-            </div>
-            <input
-              type="text"
-              className="w-2/3 text-sm ml-12 border-b border-b-gray-400 focus:border-b-2 focus:border-blue-500 outline-none"
-              placeholder="Say something..."
-              value={liveMessage}
-              onChange={(e) => setLiveMessage(e.target.value)}
-            />
-            <button className="bg-gray-900 text-white ml-3 px-2 py-1 rounded-md text-sm">
-              send
-            </button>
-          </form>
+          <div className="px-5">
+            <LiveChatList />
+            <LiveChatInput />
+          </div>
           <button
-            className="block w-full rounded-b-xl font-bold text-sm border-t-[1px] border-t-gray-200 py-2 hover:bg-gray-100 hover:border-gray-100"
+            className="block w-full rounded-b-xl font-bold text-sm border-t-[1px] border-t-gray-200 py-3 hover:bg-gray-200 hover:border-gray-100"
             onClick={() => handleChatDisplay()}
           >
             Hide chat
-          </button>{" "}
+          </button>
         </div>
       ) : (
         <button

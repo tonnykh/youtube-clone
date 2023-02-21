@@ -14,6 +14,10 @@ const list = [
   "Bollywood Music",
   "Animated films",
   "Cricket",
+
+  "Bollywood1 Music",
+  "Animated1 films",
+  "Cricket1",
 ];
 
 const ButtonList = () => {
@@ -24,9 +28,9 @@ const ButtonList = () => {
   if (!isButtonListVisible) return;
 
   return (
-    <div className="flex mx-4">
-      {list.map((each) => (
-        <Button name={each} key={each} />
+    <div className="mx-4 flex overflow-x-scroll w-[80vw]">
+      {list.map((each, index) => (
+        <Button name={each} key={each} index={index} />
       ))}
     </div>
   );
