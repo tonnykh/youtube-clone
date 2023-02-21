@@ -1,11 +1,11 @@
 import React from "react";
-import { numberFormatter, dateDiff } from "../utils/helper";
+import { numberFormatter, dateDiff, vidDuration } from "../utils/helper";
 
 const VideoCard = ({ info }) => {
   if (info === undefined) return null;
   console.log(info, "INFO");
 
-  const { snippet, statistics } = info;
+  const { snippet, statistics, contentDetails } = info;
   const { channelTitle, title, thumbnails } = snippet;
 
   return (
@@ -15,6 +15,7 @@ const VideoCard = ({ info }) => {
         src={thumbnails?.maxres?.url}
         alt="video-thumbnail"
       />
+      <p>{vidDuration(contentDetails.duration)}</p>
       <ul>
         <li className="font-bold py-2 leading-[1.2rem]">{title}</li>
         <li className="text-gray-600 text-sm">{channelTitle}</li>
