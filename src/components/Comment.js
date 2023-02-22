@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import { numberFormatter, dateDiff } from "../utils/helper";
 
 const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
   if (data === undefined) return;
-  const { authorDisplayName, authorProfileImageUrl, textOriginal, likeCount } =
-    data;
+  const {
+    authorDisplayName,
+    authorProfileImageUrl,
+    textOriginal,
+    likeCount,
+    publishedAt,
+  } = data;
 
   return (
     <div className="flex bg-gray-100 rounded-lg py-3 px-5 max-w-[852px]">
@@ -17,10 +23,15 @@ const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
         alt="profile-img"
       />
       <ul className="px-4">
-        <li className="font-bold text-sm">{authorDisplayName}</li>
+        <li className="flex items-baseline gap-2">
+          <span className="font-bold text-sm">{authorDisplayName}</span>
+          <span className="text-xs text-gray-600 py-1">
+            {dateDiff(publishedAt)}
+          </span>
+        </li>
         <li className="text-sm py-1">{textOriginal}</li>
         <li className="text-xs text-gray-600 py-1">
-          {likeCount} Likes
+          {numberFormatter.format(likeCount)} Likes
           <span className="pl-4 font-bold text-black text-xs">Reply</span>
         </li>
         {replyCount > 0 && (
@@ -47,4 +58,4 @@ const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
   );
 };
 
-export default Comment
+export default Comment;

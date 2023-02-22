@@ -15,15 +15,10 @@ const SearchResultVideoContainer = () => {
   const [nextToken, setNextToken] = useState("");
   const [page, setPage] = useState(1);
   const [channelIdList, setChannelIdList] = useState([]);
-  // const [channelDetails, setChannelDetails] = useState([]);
   const [channelThumbnailList, setChannelThumbnailList] = useState([]);
 
-  // console.log(channelThumbnailList);
-
   console.log(videoIdList, page, "LIST");
-
   console.log(searchVideosResult, "VIDEO SEARCH RESULTS");
-  // console.log(nextToken, "TOKEN NAME");
 
   /** Reset when Search query change **/
   useEffect(() => {
@@ -44,14 +39,6 @@ const SearchResultVideoContainer = () => {
       YOUTUBE_SEARCH_VIDEO_ID_API(searchQuery, nextToken)
     );
     const json = await data.json();
-    // setVideoIdList([
-    //   ...new Set(
-    //     json.items
-    //       ?.map((searchVideo) => searchVideo?.id?.videoId)
-    //       .filter((item) => item !== undefined)
-    //   ),
-    // ]);
-    console.log(json, "JSON");
     setVideoIdList(
       json.items
         ?.map((searchVideo) => searchVideo?.id?.videoId)

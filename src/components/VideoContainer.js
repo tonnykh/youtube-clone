@@ -14,7 +14,6 @@ const VideoContainer = () => {
   const [nextToken, setNextToken] = useState("");
   const [page, setPage] = useState(1);
   const [channelIdList, setChannelIdList] = useState([]);
-  // const [channelDetails, setChannelDetails] = useState([]);
   const [channelThumbnailList, setChannelThumbnailList] = useState([]);
 
   console.log(channelThumbnailList, "ID DETAILS");

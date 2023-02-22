@@ -1,9 +1,42 @@
- const GOOGLE_API_KEY = "AIzaSyAJDO7pPLuGWnR_cPcVBYrQoMKg9VuJ7nI";
+import React from "react";
 
+import { AiFillHome, AiOutlineFlag } from "react-icons/ai";
+import { MdLocalFireDepartment, MdLiveTv } from "react-icons/md";
+import { CgMusicNote } from "react-icons/cg";
+import { FiFilm } from "react-icons/fi";
+import { IoGameControllerSharp } from "react-icons/io5";
+import { ImNewspaper } from "react-icons/im";
+import { GiDiamondTrophy, GiEclipse } from "react-icons/gi";
+import { RiLightbulbLine, RiFeedbackLine } from "react-icons/ri";
+import { FiSettings, FiHelpCircle } from "react-icons/fi";
+import { SlArrowLeft } from "react-icons/sl";
+
+export const categories = [
+  { name: "New", icon: <AiFillHome />, type: "home" },
+  { name: "Trending", icon: <MdLocalFireDepartment />, type: "category" },
+  { name: "Music", icon: <CgMusicNote />, type: "category" },
+  { name: "Films", icon: <FiFilm />, type: "category" },
+  { name: "Live", icon: <MdLiveTv />, type: "category" },
+  { name: "Gaming", icon: <IoGameControllerSharp />, type: "category" },
+  { name: "News", icon: <ImNewspaper />, type: "category" },
+  { name: "Sports", icon: <GiDiamondTrophy />, type: "category" },
+  { name: "Learning", icon: <RiLightbulbLine />, type: "category" },
+  {
+    name: "Fashion & beauty",
+    icon: <GiEclipse />,
+    type: "category",
+    divider: true,
+  },
+  { name: "Settings", icon: <FiSettings />, type: "menu" },
+  { name: "Report History", icon: <AiOutlineFlag />, type: "menu" },
+  { name: "Help", icon: <FiHelpCircle />, type: "menu" },
+  { name: "Send feedback", icon: <RiFeedbackLine />, type: "menu" },
+  { name: "Left Arrow", icon: <SlArrowLeft />, type: "control" },
+];
+
+const GOOGLE_API_KEY = "AIzaSyAJDO7pPLuGWnR_cPcVBYrQoMKg9VuJ7nI";
 
 export const LIVE_CHAT_COUNT = 10;
-
-
 
 export const YOUTUBE_VIDEOS_API = (nextToken) =>
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&pageToken=" +
@@ -15,15 +48,12 @@ export const YOUTUBE_SEARCH_API =
   "https://cors-anywhere.herokuapp.com/http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const YOUTUBE_SEARCH_VIDEO_ID_API = (search, nextToken) =>
-  // "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" +
-  // search +
-  // "&pageToken=" +
-  // nextToken +
-  // "&key=" +
-  // GOOGLE_API_KEY;
-"https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + search + "&pageToken=" + nextToken + "&type=video&fields=items%28id%28videoId%29%2C+snippet%28description%29%29%2CnextPageToken%2CpageInfo&key=" + GOOGLE_API_KEY;
-
-//https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=HXwPcfH1Ejw,a5e7yEhbGhk,nmnaI3TGtBo,nbfWVn9waM8,GKj9rDXZDn8&key=AIzaSyATlF26iF-kjV4MgmcSCtZpAJDyrHFe_J8
+  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" +
+  search +
+  "&pageToken=" +
+  nextToken +
+  "&type=video&fields=items%28id%28videoId%29%2C+snippet%28description%29%29%2CnextPageToken%2CpageInfo&key=" +
+  GOOGLE_API_KEY;
 
 export const YOUTUBE_SEARCH_VIDEO_API = (videoIdList) =>
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=" +
@@ -56,12 +86,3 @@ export const YOUTUBE_COMMENTS_API = (videoId, nextToken) =>
   nextToken +
   "&prettyPrint=true&key=" +
   GOOGLE_API_KEY;
-
-//https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=_VB39Jo8mAQ&key=AIzaSyClu2V_22XpCG2GTe1euD35_Mh5bn4eTjA
-
-//https://www.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&order=relevance&videoId=VQCfbmhIjzo&prettyPrint=true&key=AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s
-
-
-// https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=cat&pageToken=CB4QAA&type=video&fields=items%28id%28videoId%29%2C+snippet%28description%29%29%2CnextPageToken&key=AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s
-
-// https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=cat&type=video&fields=items%28id%28videoId%29%2C+snippet%28description%29%29%2CnextPageToken%2CpageInfo&key=AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s

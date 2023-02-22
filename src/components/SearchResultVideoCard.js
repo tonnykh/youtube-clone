@@ -6,13 +6,12 @@ import { dateDiff, numberFormatter, vidDuration } from "../utils/helper";
 const SearchResultVideoCard = ({ info, channelThumbnail }) => {
   const { snippet, statistics, contentDetails } = info;
   const { channelTitle, title, thumbnails } = snippet;
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(closeButtonList());
   });
-  // w-[1040px] mx-auto h-48 m-2
+
   return (
     <div className="flex m-4">
       <div className="relative">

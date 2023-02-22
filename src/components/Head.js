@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [showSuggeations, setShowSuggeations] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const dispatch = useDispatch();
   const searchCache = useSelector((store) => store.search);
   console.log(searchCache, "CACHE RESULT");
@@ -47,17 +47,13 @@ const Head = () => {
 
   const handleKeyDown = (e) => {
     console.log(e.key, "KEY");
-  };
-
-  const handleSubmit = (e) => {
-    e.prevent.default();
-    console.log("SUBMIT");
+    if (e.key === "Enter") setShowSuggestions(false);
   };
 
   const handleSuggestionClick = (suggestion) => {
     setSearchQuery(suggestion);
     console.log(suggestion, "SUGGESTION NAME");
-    setShowSuggeations(false);
+    setShowSuggestions(false);
   };
 
   return (
@@ -79,14 +75,14 @@ const Head = () => {
       </div>
 
       <div className="w-[39rem] z-10">
-        <form className="flex pt-2 pb-1" onSubmit={(e) => handleSubmit()}>
+        <form className="flex pt-2 pb-1">
           <input
             className="border w-3/4 rounded-l-full border-r-white pl-4"
             type="text"
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={() => setShowSuggeations(true)}
+            onFocus={() => setShowSuggestions(true)}
             onKeyDown={handleKeyDown}
           />
 
@@ -96,7 +92,7 @@ const Head = () => {
             </button>
           </Link>
         </form>
-        {suggestions.length !== 0 && showSuggeations && (
+        {suggestions.length !== 0 && showSuggestions && (
           <div className="bg-white w-3/4 rounded-xl shadow-lg border border-gray-100 py-3">
             <ul className="">
               {suggestions.map((suggestion) => (

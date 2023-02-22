@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import SuggestionVideoContainer from "./SuggestionVideoContainer";
-import VideoDetailsContainer from "./VideoDetails";
+import WatchVideoDetails from "./WatchVideoDetails";
 import CommentsContainer from "./CommentsContainer ";
 import LiveChat from "./LiveChat";
 
@@ -32,7 +32,7 @@ const WatchPage = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
-        <VideoDetailsContainer />
+        <WatchVideoDetails />
         <CommentsContainer />
       </div>
 
