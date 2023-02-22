@@ -57,7 +57,7 @@ const Head = () => {
   };
 
   return (
-    <div className="flex h-14 shadow-lg justify-between mx-2 mb-2">
+    <div className="flex h-14 justify-between mx-2 mb-2">
       <div className="flex items-center gap-5 py-3 px-5">
         <img
           onClick={() => toggleMenuHandler()}

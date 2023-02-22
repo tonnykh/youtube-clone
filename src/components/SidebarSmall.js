@@ -18,9 +18,9 @@ const sidebarItemNames = ["Home", "Shorts", "Subscriptions", "Library"];
 const SidebarSmall = () => {
   return (
     <div className="flex flex-col ml-2 ">
-      {sidebarItemNames.map((name) => (
+      {/* {sidebarItemNames.map((name) => (
           <SidebarItem name={name} key={name} />
-      ))}
+      ))} */}
     </div>
   );
 };
