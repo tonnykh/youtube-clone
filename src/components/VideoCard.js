@@ -21,7 +21,7 @@ const VideoCard = ({ info, channelThumbnail }) => {
         {vidDuration(contentDetails.duration)}
       </p>
 
-      <div className="flex py-3">
+      <div className="flex pt-3 pb-1">
         <img
           className="w-9 h-9 rounded-full mr-2"
           src={channelThumbnail}
@@ -35,7 +35,7 @@ const VideoCard = ({ info, channelThumbnail }) => {
           <li className="text-gray-600">
             <span> {numberFormatter.format(statistics.viewCount)} views</span>
             <span>
-              <span className="font-bold">·</span>{" "}
+              <span className="font-bold"> · </span>
               {dateDiff(snippet.publishedAt)}
             </span>
           </li>
