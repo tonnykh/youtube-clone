@@ -34,7 +34,7 @@ export const categories = [
   { name: "Left Arrow", icon: <SlArrowLeft />, type: "control" },
 ];
 
-const GOOGLE_API_KEY = "AIzaSyAJDO7pPLuGWnR_cPcVBYrQoMKg9VuJ7nI";
+const GOOGLE_API_KEY = "AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s";
 
 export const LIVE_CHAT_COUNT = 10;
 

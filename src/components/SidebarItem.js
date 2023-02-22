@@ -6,8 +6,8 @@ const SidebarItem = ({ icon, text, isFocus, isMenuOpen }) => {
   return (
     <button
       className={
-        " items-center hover:bg-gray-100 rounded-xl cursor-pointer flex " +
-        (isFocus && "font-bold bg-gray-100 ") +
+        " items-center hover:bg-gray-100 rounded-xl cursor-pointer flex  " +
+        (isFocus ? " font-bold bg-gray-100 " : undefined) +
         (isMenuOpen ? " gap-6 w-52 text-sm p-3 " : " text-xs flex-col gap-2 p-4 inline-block max-w-min w-full px-5")
       }
       //   style={{ overflowWrap: "break-word" }}
