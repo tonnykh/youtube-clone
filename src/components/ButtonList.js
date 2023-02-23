@@ -24,7 +24,7 @@ const ButtonList = () => {
   if (!isButtonListVisible) return;
 
   return (
-    <div className="mx-4 flex overflow-x-scroll w-[80vw]">
+    <div className="mr-4 flex overflow-x-scroll w-[80vw] text-sm">
       {list.map((each, index) => (
         <Button name={each} key={each} index={index} />
       ))}

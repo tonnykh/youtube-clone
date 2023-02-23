@@ -96,7 +96,7 @@ const SearchResultVideoContainer = () => {
   }, []);
 
   return (
-    <div className="pl-16">
+    <div className="pl-12">
       {searchVideosResult.map((video, index) => (
         <Link key={video?.id + index} to={"/watch?v=" + video?.id}>
           <SearchResultVideoCard

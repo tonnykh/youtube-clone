@@ -9,7 +9,7 @@ import { ImNewspaper } from "react-icons/im";
 import { GiDiamondTrophy, GiEclipse } from "react-icons/gi";
 import { RiLightbulbLine, RiFeedbackLine } from "react-icons/ri";
 import { FiSettings, FiHelpCircle } from "react-icons/fi";
-import { SlArrowLeft } from "react-icons/sl";
+// import { SlArrowLeft } from "react-icons/sl";
 
 export const categories = [
   { name: "Home", icon: <AiFillHome />, type: "home" },
@@ -31,7 +31,7 @@ export const categories = [
   { name: "Report History", icon: <AiOutlineFlag />, type: "menu" },
   { name: "Help", icon: <FiHelpCircle />, type: "menu" },
   { name: "Send feedback", icon: <RiFeedbackLine />, type: "menu" },
-  { name: "Left Arrow", icon: <SlArrowLeft />, type: "control" },
+  // { name: "Left Arrow", icon: <SlArrowLeft />, type: "control" },
 ];
 
 const GOOGLE_API_KEY = "AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s";

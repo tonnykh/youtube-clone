@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { categories } from "../utils/constants";
 import SidebarItem from "./SidebarItem";
-import SidebarSmall from "./SidebarSmall";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 
@@ -13,13 +12,15 @@ const Sidebar = () => {
   const [focusItem, setFocusItem] = useState("Home");
   const dispatch = useDispatch();
 
+  console.log(location, "LOCATION")
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest(".sidebar") && !event.target.closest(".menu"))
         dispatch(toggleMenu());
     };
 
-    if (isMenuOpen) {
+    if (isMenuOpen && location.pathname === "/watch") {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
@@ -34,7 +35,7 @@ const Sidebar = () => {
   return (
     <div
       className={
-        "sidebar bg-white " + (isMenuOpen ? " pt-2 px-5" : " pl-[10px] pt-1")
+        "sidebar bg-white " + (isMenuOpen ? " pt-2 px-5" : " pl-[10px] pr-4 pt-1")
       }
     >
       {categories.map((item) => (
