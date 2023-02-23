@@ -123,8 +123,11 @@ const Head = () => {
             </div>
 
             <Link to={"result?search_query=" + searchQuery}>
-              <button className="self-center rounded-r-full border-l  py-[9px] px-5 bg-gray-50 hover:bg-gray-100">
+              <button className="self-center rounded-r-full border-l  py-[9px] px-5 bg-gray-50 hover:bg-gray-100 relative group">
                 <IoIosSearch className="text-xl" />
+                <span className="invisible group-hover:visible  opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap left-[2px] -bottom-[39px]">
+                  Search
+                </span>
               </button>
             </Link>
           </form>
@@ -159,7 +162,7 @@ const Head = () => {
       <div className="flex py-3 px-6 pr-12 items-center gap-4">
         <div className="text-xl cursor-pointer hover:bg-gray-100 rounded-full p-3 relative group">
           <RiVideoAddLine />
-          <span className="invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap -left-[7px] -bottom-9">
+          <span className="invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap -left-[2px]  -bottom-9">
             Create
           </span>
         </div>

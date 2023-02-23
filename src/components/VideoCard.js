@@ -9,7 +9,7 @@ const VideoCard = ({ info, channelThumbnail }) => {
   const { channelTitle, title, thumbnails } = snippet;
 
   return (
-    <div className="m-1 p-2 w-72 shadow-lg rounded-lg relative">
+    <div className="m-1 p-2 w-72 hover:shadow-lg rounded-lg relative">
       <img
         className=" rounded-lg"
         src={thumbnails?.maxres?.url}

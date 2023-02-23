@@ -35,7 +35,8 @@ const Sidebar = () => {
   return (
     <div
       className={
-        "sidebar bg-white " + (isMenuOpen ? " pt-2 px-5" : " pl-[10px] pr-4 pt-1")
+        "sidebar bg-white overflow-y-auto h-[calc(100vh_-_60px)]" +
+        (isMenuOpen ? " pt-2 px-5" : " pl-[10px] pr-4 pt-1")
       }
     >
       {categories.map((item) => (
