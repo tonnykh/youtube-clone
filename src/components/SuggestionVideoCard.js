@@ -9,7 +9,11 @@ const SuggestionVideoCard = ({ info }) => {
     <div className="flex w-96 h-24 mb-4">
       <img
         className="rounded-lg"
-        src={thumbnails?.maxres?.url}
+        src={
+          thumbnails?.maxres?.url !== undefined
+            ? thumbnails?.maxres?.url
+            : thumbnails?.high?.url
+        }
         alt="video-thumbnail"
       />
       <ul className="text-xs pl-2">

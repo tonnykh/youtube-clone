@@ -9,10 +9,10 @@ const VideoCard = ({ info, channelThumbnail }) => {
   const { channelTitle, title, thumbnails } = snippet;
 
   return (
-    <div className="m-1 p-2 w-72 hover:shadow-lg rounded-lg relative">
+    <div className="mx-auto my-0 p-2 w-72 hover:shadow-lg rounded-lg relative">
       <img
         className=" rounded-lg"
-        src={thumbnails?.maxres?.url}
+        src={thumbnails?.maxres?.url !== undefined ? thumbnails?.maxres?.url : thumbnails?.high?.url}
         alt="video-thumbnail"
       />
       <p

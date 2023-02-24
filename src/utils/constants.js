@@ -9,7 +9,6 @@ import { ImNewspaper } from "react-icons/im";
 import { GiDiamondTrophy, GiEclipse } from "react-icons/gi";
 import { RiLightbulbLine, RiFeedbackLine } from "react-icons/ri";
 import { FiSettings, FiHelpCircle } from "react-icons/fi";
-// import { SlArrowLeft } from "react-icons/sl";
 
 export const categories = [
   { name: "Home", icon: <AiFillHome />, type: "home" },
@@ -31,7 +30,6 @@ export const categories = [
   { name: "Report History", icon: <AiOutlineFlag />, type: "menu" },
   { name: "Help", icon: <FiHelpCircle />, type: "menu" },
   { name: "Send feedback", icon: <RiFeedbackLine />, type: "menu" },
-  // { name: "Left Arrow", icon: <SlArrowLeft />, type: "control" },
 ];
 
 const GOOGLE_API_KEY = "AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s";
@@ -41,7 +39,7 @@ export const LIVE_CHAT_COUNT = 10;
 export const YOUTUBE_VIDEOS_API = (nextToken) =>
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&pageToken=" +
   nextToken +
-  "&maxResults=3&regionCode=IN&key=" +
+  "&maxResults=6&regionCode=IN&key=" +
   GOOGLE_API_KEY;
 
 export const YOUTUBE_SEARCH_API =

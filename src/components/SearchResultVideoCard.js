@@ -22,7 +22,7 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
               : thumbnails?.maxres?.url
           }
           alt="thumbnail"
-          className="rounded-2xl h-48 w-[341px]"
+          className="rounded-2xl h-48 w-[341px] hover:shadow-xl"
         />
         <p className="absolute px-1 right-2 bottom-2 opacity-80 bg-black text-white rounded-sm text-xs font-bold">
           {vidDuration(contentDetails.duration)}

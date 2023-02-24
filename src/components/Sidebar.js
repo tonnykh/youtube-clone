@@ -13,6 +13,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
   console.log(location, "LOCATION")
+  console.log(isMenuOpen, "OPEN OR NOT");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -35,12 +36,15 @@ const Sidebar = () => {
   return (
     <div
       className={
-        "sidebar bg-white overflow-y-auto h-[calc(100vh_-_60px)]" +
-        (isMenuOpen ? " pt-2 px-5" : " pl-[10px] pr-4 pt-1")
+        "sidebar bg-white overflow-y-auto h-screen absolute z-10 drop-shadow-lg pb-4 rounded-r-lg " +
+        (isMenuOpen ? " pt-5 px-5 w-[250px] " : " w-0")
       }
     >
       {categories.map((item) => (
-        <div key={item.name} className={!isMenuOpen ? "w-16" : undefined}>
+        <div
+          key={item.name}
+          className={"h-full " + !isMenuOpen ? "w-16" : undefined}
+        >
           <Link to="/" onClick={() => setFocusItem(item.name)}>
             <SidebarItem
               icon={item?.icon}
@@ -50,7 +54,7 @@ const Sidebar = () => {
               isMenuOpen={isMenuOpen}
             />
           </Link>
-          {item?.divider && <hr className="border-black/2 my-5" />}
+          {item?.divider && <hr className="border-black/2 my-5 w-52" />}
         </div>
       ))}
     </div>
