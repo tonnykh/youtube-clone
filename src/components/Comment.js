@@ -1,5 +1,8 @@
 import React from "react";
 import { numberFormatter, dateDiff } from "../utils/helper";
+import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import { BiCaretDown, BiCaretUp } from "react-icons/bi";
+
 
 const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
   if (data === undefined) return;
@@ -17,7 +20,7 @@ const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
         className={
           replyCount === undefined
             ? "w-8 h-8 rounded-full"
-            : "w-12 h-12 rounded-full"
+            : "w-10 h-10 rounded-full"
         }
         src={authorProfileImageUrl}
         alt="profile-img"
@@ -30,25 +33,29 @@ const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
           </span>
         </li>
         <li className="text-sm py-1">{textOriginal}</li>
-        <li className="text-xs text-gray-600 py-1">
-          {numberFormatter.format(likeCount)} Likes
+        <li className="text-xs text-gray-600 py-1 flex items-center gap-1">
+          <AiOutlineLike className="text-xl text-black" />
+          {numberFormatter.format(likeCount)}
+          <AiOutlineDislike className="text-xl text-black ml-1 -scale-x-100" />
           <span className="pl-4 font-bold text-black text-xs">Reply</span>
         </li>
         {replyCount > 0 && (
           <li className="relative top-[5px]">
             {isVisible ? (
               <button
-                className="font-bold text-blue-600 text-sm hover:bg-blue-100 px-3 py-2 rounded-full"
+                className="font-bold text-blue-600 text-sm hover:bg-blue-100 px-3 py-2 rounded-full flex gap-1"
                 onClick={() => setVisibleReply(false)}
               >
-                {replyCount} replies close
+                <BiCaretUp className="text-xl"/>
+                {replyCount} replies
               </button>
             ) : (
               <button
-                className="font-bold text-blue-600 text-sm hover:bg-blue-100 px-3 py-2 rounded-full"
+                className="font-bold text-blue-600 text-sm hover:bg-blue-100 px-3 py-2 rounded-full flex gap-1"
                 onClick={() => setVisibleReply(id)}
               >
-                {replyCount} replies see
+                <BiCaretDown className="text-xl"/>
+                {replyCount} replies 
               </button>
             )}
           </li>

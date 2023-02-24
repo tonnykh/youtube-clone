@@ -42,7 +42,7 @@ const LiveChatInput = () => {
           src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
           alt="user-profile"
         />
-        <span className="font-bold text-sm px-2">Tonny kh 🔴</span>
+        <span className="font-bold text-sm px-2">Tonny kh 🚀</span>
       </div>
       <input
         type="text"

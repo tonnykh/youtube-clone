@@ -104,11 +104,11 @@ const Head = () => {
       <div className="z-10 pt-2 w-2/5">
         <div className="flex items-center gap-2">
           <form
-            className="flex border rounded-full focus-within:shadow-lg  group w-full"
+            className="flex border rounded-full focus-within:shadow-lg  group/item w-full"
             ref={formRef}
           >
             <div className="flex items-center w-full ">
-              <div className="pl-4 text-xl hidden group-focus-within:block">
+              <div className="pl-4 text-xl hidden group-focus-within/item:block">
                 <IoIosSearch />
               </div>
               <input
