@@ -16,22 +16,22 @@ const WatchPage = () => {
   }, []);
 
   return (
-    <div className="flex px-20 justify-center m absolute -z-10 w-full">
+    <div className="  ">
       <div>
-        <iframe
-          className="px-6 py-4 "
-          width="900"
-          height="515"
-          src={
-            "https://www.youtube.com/embed/" +
-            searchParams.get("v") +
-            "?autoplay=1"
-          }
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
+        <div className="sticky top-14">
+          <iframe
+            className="min-w-full min-h-[180px] "
+            src={
+              "https://www.youtube.com/embed/" +
+              searchParams.get("v") +
+              "?autoplay=1"
+            }
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
         <WatchVideoDetails />
         <CommentsContainer />
       </div>

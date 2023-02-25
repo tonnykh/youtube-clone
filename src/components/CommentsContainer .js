@@ -22,18 +22,18 @@ const CommentsContainer = () => {
     setNextToken(json.nextPageToken);
   };
 
-  useEffect(() => {
-    function handleScroll() {
-      const isBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight;
-      if (isBottom) {
-        setPage((prevPage) => prevPage + 1);
-      }
-    }
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   function handleScroll() {
+  //     const isBottom =
+  //       window.innerHeight + window.scrollY >=
+  //       document.documentElement.scrollHeight;
+  //     if (isBottom) {
+  //       setPage((prevPage) => prevPage + 1);
+  //     }
+  //   }
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   if (comments === undefined) return null;
 

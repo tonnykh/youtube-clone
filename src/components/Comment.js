@@ -15,7 +15,7 @@ const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
   } = data;
 
   return (
-    <div className="flex bg-gray-100 rounded-lg py-3 px-5 max-w-[852px]">
+    <div className="flex bg-gray-100 rounded-lg py-3 px-5 ">
       <img
         className={
           replyCount === undefined
@@ -32,15 +32,15 @@ const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
             {dateDiff(publishedAt)}
           </span>
         </li>
-        <li className="text-sm py-1">{textOriginal}</li>
+        <li className="text-sm py-1 break-all">{textOriginal}</li>
         <li className="text-xs text-gray-600 py-1 flex items-center gap-1">
           <AiOutlineLike className="text-xl text-black" />
           {numberFormatter.format(likeCount)}
-          <AiOutlineDislike className="text-xl text-black ml-1 -scale-x-100" />
+          <AiOutlineDislike className="text-xl text-black ml-1 " />
           <span className="pl-4 font-bold text-black text-xs">Reply</span>
         </li>
         {replyCount > 0 && (
-          <li className="relative top-[5px]">
+          <li className="">
             {isVisible ? (
               <button
                 className="font-bold text-blue-600 text-sm hover:bg-blue-100 px-3 py-2 rounded-full flex gap-1"

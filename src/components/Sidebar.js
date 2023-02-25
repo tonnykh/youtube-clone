@@ -36,8 +36,10 @@ const Sidebar = () => {
   return (
     <div
       className={
-        "sidebar bg-white overflow-y-auto h-screen absolute z-10 drop-shadow-lg pb-4 rounded-r-lg " +
-        (isMenuOpen ? " pt-5 px-5 w-[250px] " : " w-0")
+        "sidebar bg-white overflow-y-auto h-screen fixed z-20 drop-shadow-lg pb-4 rounded-r-lg  " +
+        (isMenuOpen ? " pt-5 px-5 w-[250px] " : " w-0") + (
+          location.pathname === "/watch" ? "top-14" : ""
+        )
       }
     >
       {categories.map((item) => (

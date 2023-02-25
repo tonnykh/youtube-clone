@@ -46,12 +46,12 @@ const LiveChatInput = () => {
       </div>
       <input
         type="text"
-        className="w-2/3 ml-8 border border-gray-200 px-5 py-2 rounded-full"
+        className="w-2/3 ml-7 border border-gray-200 px-3 py-2 rounded-full"
         placeholder="Say something..."
         value={liveMessage}
         onChange={(e) => setLiveMessage(e.target.value)}
       />
-      <button className="bg-gray-100 border border-gray-300  text-black ml-1 px-4 py-2 rounded-full font-bold hover:bg-gray-200 hover:border-gray-200">
+      <button className="bg-gray-100 border border-gray-300  text-black ml-1 px-2 py-2 rounded-full font-bold hover:bg-gray-200 hover:border-gray-200">
         send
       </button>
     </form>
@@ -85,7 +85,7 @@ const LiveChat = () => {
   return (
     <>
       {isLiveMessageVisible ? (
-        <div className=" rounded-xl mt-4 bg-gray-100 relative">
+        <div className=" rounded-xl mt-4 bg-gray-100 ">
           <div className="text-center py-2 font-bold border-b border-gray-300 mx-5">
             Live Chat
           </div>

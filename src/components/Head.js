@@ -84,7 +84,7 @@ const Head = () => {
   };
 
   return (
-    <div className={"flex h-14 justify-between mx-2 sticky top-0  bg-white" + (isMenuOpen ? "" : " z-10")}>
+    <div className={"flex h-14 justify-between mx-2 sticky top-0  bg-white" + (isMenuOpen ? "" : " z-10") }>
       <div className="flex items-center gap-1 py-3">
         <div className="menu text-xs cursor-pointer hover:bg-gray-100 rounded-full p-3">
           <SlMenu

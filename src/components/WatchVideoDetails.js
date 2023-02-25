@@ -43,62 +43,64 @@ const WatchVideoDetails = () => {
   const { channelTitle, title } = snippet;
 
   return (
-    <div className="w-[900px] px-6">
-      <h2 className="font-bold text-lg">{title}</h2>
+    <div className="px-2">
+      <h2 className="font-bold leading-none py-3 text-sm">{title}</h2>
 
-      <div className="flex justify-between py-3 items-center">
-        <div className="flex items-center">
-          <img
-            className="w-12 h-12 rounded-full mr-4"
-            src={channelDetails?.snippet?.thumbnails?.high?.url}
-            alt="channel-profile"
-          />
-          <ul className="pr-6">
-            <li className="font-bold">{channelTitle}</li>
-            <li className="text-gray-600 text-xs">
-              {numberFormatter.format(
-                channelDetails?.statistics?.subscriberCount
-              )}{" "}
-              subscribers
-            </li>
-          </ul>
-          <button className="bg-black text-white px-4 font-bold text-sm rounded-full h-10 hover:bg-neutral-800">
+      <div className="justify-between items-center">
+        <div className="flex items-center justify-between pb-3">
+          <div className="flex gap-1 items-center">
+            <img
+              className="w-12 h-12 rounded-full "
+              src={channelDetails?.snippet?.thumbnails?.high?.url}
+              alt="channel-profile"
+            />
+            <ul className="">
+              <li className="font-bold text-xs">{channelTitle}</li>
+              <li className="text-gray-600 text-[10px]">
+                {numberFormatter.format(
+                  channelDetails?.statistics?.subscriberCount
+                )}{" "}
+                subscribers
+              </li>
+            </ul>
+          </div>
+          <button className="bg-black text-white font-bold text-[10px] rounded-full py-1 px-2 hover:bg-neutral-800">
             Subscribe
           </button>
         </div>
 
-        <div className="flex gap-3">
-          <div className="flex h-10 relative">
-            <button className="bg-gray-100 text-black pr-3 pl-4 font-bold text-sm rounded-l-full flex items-center gap-1 hover:bg-gray-200 group relative">
-              <AiOutlineLike className="text-xl" />
+        <div className="flex gap-2 text-[10px]">
+          <div className="flex ">
+            <button className="bg-gray-100 text-black font-bold  rounded-l-full flex items-center px-2 py-1 hover:bg-gray-200 group gap-1">
+              <AiOutlineLike className="" />
               {numberFormatter.format(statistics.likeCount)}
-              <span className="font-normal invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 left-3">
+              <span className="font-normal invisible group-hover:visible opacity-80 bg-gray-600 text-white block rounded-md absolute whitespace-nowrap z-20 -bottom-9 left-3">
                 I like this
               </span>
             </button>
-            <div className="border-l border-gray-300 h-6 right-[48px] top-2 absolute"></div>
-            <button className="bg-gray-100 text-black pl-3 pr-4 font-bold text-sm rounded-r-full hover:bg-gray-200 group relative">
-              <AiOutlineDislike className="text-xl -scale-x-100" />
-              <span className="font-normal invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 -left-5">
+            {/* <div className="border-l border-gray-300 h-4 right-[26px] top-1 absolute"></div> */}
+            <button className="bg-gray-100 text-black font-bold  rounded-r-full hover:bg-gray-200 group  px-2 py-1">
+              <AiOutlineDislike className="" />
+              <span className="font-normal invisible group-hover:visible opacity-80 bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 -left-5">
                 I dislike this
               </span>
             </button>
           </div>
-          <button className="bg-gray-100 text-black px-4 py-2 font-bold text-sm rounded-full flex items-center gap-2 hover:bg-gray-200 group relative">
-            <RiShareForwardLine className="text-xl" />
+          <button className="bg-gray-100 text-black font-bold rounded-full flex items-center gap-1 px-2 py-1 hover:bg-gray-200 group ">
+            <RiShareForwardLine className="" />
             Share
-            <span className="font-normal invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 right-6">
+            <span className="font-normal invisible group-hover:visible opacity-80 bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 right-6">
               Share
             </span>
           </button>
-          <button className="bg-gray-100 text-black px-4 py-2 pl-5 font-bold text-sm rounded-full flex items-center gap-2 hover:bg-gray-200 group relative">
-            <TfiDownload className="text-xl" />
+          <button className="bg-gray-100 text-black font-bold rounded-full flex items-center hover:bg-gray-200 group  px-2 py-1 gap-1">
+            <TfiDownload className="" />
             Download
-            <span className="font-normal invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 right-7">
+            <span className="font-normal invisible group-hover:visible opacity-80 bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 right-7">
               Download
             </span>
           </button>
-          <button className="bg-gray-100 text-black px-[14px] py-2 font-bold text-sm rounded-full hover:bg-gray-200">
+          <button className="bg-gray-100 text-black font-bold rounded-full hover:bg-gray-200 px-2 py-1">
             ···
           </button>
         </div>
@@ -106,7 +108,7 @@ const WatchVideoDetails = () => {
 
       <div
         className={
-          "bg-gray-100 mt-3 py-3 px-4 rounded-lg relative hover:bg-gray-200 group " +
+          "bg-gray-100 mt-3 py-3 px-4 rounded-lg relative -z-10 hover:bg-gray-200 group " +
           (!isVideoDescriptionVisible && "h-32 overflow-hidden pb-8")
         }
       >
@@ -119,7 +121,7 @@ const WatchVideoDetails = () => {
         <div className="text-sm whitespace-pre-line">{snippet.description}</div>
         {!isVideoDescriptionVisible && (
           <button
-            className="font-bold text-sm absolute bottom-[0px] w-full bg-gray-100 text-gray-700 text-left pb-2 group-hover:bg-slate-200 hover:text-black"
+            className="font-bold text-sm absolute bottom-[0px] w-full bg-gray-100 text-gray-700 text-left pb-2 group-hover:bg-slate-200 hover:text-black "
             onClick={() => setIsVideoDescriptionVisible(true)}
           >
             Show more

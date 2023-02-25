@@ -8,7 +8,7 @@ const CommentList = ({ comments }) => {
   console.log(comments, "COMMENTS");
 
   return comments.map((comment) => (
-    <div key={comment.id} className="my-2 ">
+    <div key={comment.id} className="my-2 max-w-[85vw]">
       <Comment
         data={
           comment.snippet.topLevelComment !== undefined
@@ -21,7 +21,7 @@ const CommentList = ({ comments }) => {
         setVisibleReply={setVisibleReply}
       />
       {visibleReply === comment.id && (
-        <div className="pl-14 w-[852px]">
+        <div className="pl-14 ">
           <CommentList comments={comment?.replies?.comments} />
         </div>
       )}
