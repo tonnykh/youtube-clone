@@ -46,7 +46,7 @@ export const YOUTUBE_SEARCH_API =
   "https://cors-anywhere.herokuapp.com/http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const YOUTUBE_SEARCH_VIDEO_ID_API = (search, nextToken) =>
-  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" +
+  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=" +
   search +
   "&pageToken=" +
   nextToken +

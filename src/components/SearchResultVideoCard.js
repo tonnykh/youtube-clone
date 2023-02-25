@@ -13,7 +13,7 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
   });
 
   return (
-    <div className="flex m-4">
+    <div className=" m-4">
       <div className="relative">
         <img
           src={
@@ -28,9 +28,9 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
           {vidDuration(contentDetails.duration)}
         </p>
       </div>
-      <div className="px-4">
-        <h2 className="font-bold text-lg">{title}</h2>
-        <ul className="text-xs">
+      <div className="px-4 pt-2 text-xs">
+        <h2 className="font-bold">{title}</h2>
+        <ul className="">
           <li className="text-gray-600">
             <span> {numberFormatter.format(statistics.viewCount)} views</span>
             <span>
@@ -40,7 +40,7 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
             </span>
           </li>
         </ul>
-        <div className="flex items-center py-3">
+        <div className="flex items-center">
           <img
             className="w-7 h-7 rounded-full mr-2"
             src={channelThumbnail}
@@ -48,10 +48,10 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
           />
           <div className="text-xs">{channelTitle}</div>
         </div>
-        <div className="text-xs">
+        {/* <div className="text-xs">
           {snippet.description.slice(0, 110) +
             (snippet.description.length > 110 ? "..." : "")}
-        </div>
+        </div> */}
       </div>
     </div>
   );

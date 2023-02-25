@@ -84,7 +84,12 @@ const Head = () => {
   };
 
   return (
-    <div className={"flex h-14 justify-between mx-2 sticky top-0  bg-white" + (isMenuOpen ? "" : " z-10") }>
+    <div
+      className={
+        "flex h-14 justify-between mx-2 sticky top-0  bg-white" +
+        (isMenuOpen ? "" : " z-10")
+      }
+    >
       <div className="flex items-center gap-1 py-3">
         <div className="menu text-xs cursor-pointer hover:bg-gray-100 rounded-full p-3">
           <SlMenu
@@ -102,14 +107,14 @@ const Head = () => {
         </Link>
       </div>
 
-      <div className=" pt-[14.5px] w-2/5 relative">
+      <div className=" pt-[14.5px] w-2/5  relative">
         <div className="flex items-center gap-2">
           <form
-            className="flex border rounded-full focus-within:shadow-lg focus-within:absolute -right-[19%] bottom-[8.5px] bg-white group/item "
+            className="flex border rounded-full focus-within:shadow-lg focus-within:absolute -right-[19%] bottom-[8.5px] bg-white group/item  "
             ref={formRef}
           >
-            <div className="flex items-center focus-within:w-52 ">
-              <div className="pl-3 text-xl hidden group-focus-within/item:block">
+            <div className="flex items-center focus-within:w-52">
+              <div className="pl-3 text-xl hidden group-focus-within/item:block ">
                 <IoIosSearch />
               </div>
               <input
@@ -140,7 +145,7 @@ const Head = () => {
           </div>
         </div>
         {suggestions.length !== 0 && showSuggestions && (
-          <div className="suggestion bg-white w-[calc(100%_-_113px)] rounded-xl shadow-lg border border-gray-100 py-3">
+          <div className="suggestion bg-white rounded-xl shadow-lg border border-gray-100 py-3 w-52 absolute top-12 right-4">
             <ul className="">
               {suggestions.map((suggestion) => (
                 <Link
