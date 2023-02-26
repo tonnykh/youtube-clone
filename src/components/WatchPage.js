@@ -19,28 +19,32 @@ const WatchPage = () => {
 
   return (
     <div className={isMenuOpen ? "pointer-events-none blur-3xl fixed" : " "}>
-      <div>
-        <div className="sticky top-14">
-          <iframe
-            className="min-w-full min-h-[180px] "
-            src={
-              "https://www.youtube.com/embed/" +
-              searchParams.get("v") +
-              "?autoplay=1"
-            }
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
+      <div className="lg:flex lg:justify-center lg:px-12">
+        <div className="lg:pr-6 lg:lg:max-w-[820px] ">
+          <div className="sticky top-14 sm:static">
+            <div className="relative pb-[56%] h-0 md:pb-[calc(43%)] lg:static lg:pb-0 lg:h-full">
+              <iframe
+                className="absolute w-full h-full md:min-h-[340px] lg:min-h-[415px] lg:static "
+                src={
+                  "https://www.youtube.com/embed/" +
+                  searchParams.get("v") +
+                  "?autoplay=1"
+                }
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+          <WatchVideoDetails />
+          <CommentsContainer />
         </div>
-        <WatchVideoDetails />
-        <CommentsContainer />
-      </div>
 
-      <div>
-        <LiveChat />
-        <SuggestionVideoContainer />
+        <div className="lg:min-w-[350px]">
+          <LiveChat />
+          <SuggestionVideoContainer />
+        </div>
       </div>
     </div>
   );

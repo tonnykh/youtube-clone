@@ -86,7 +86,7 @@ const Head = () => {
   return (
     <div
       className={
-        "flex h-14 justify-between mx-2 sticky top-0  bg-white" +
+        "flex h-14 justify-between px-2 sticky top-0 relative z-20  bg-white" +
         (isMenuOpen ? "" : " z-10")
       }
     >
@@ -149,7 +149,7 @@ const Head = () => {
           </div>
         </div>
         {suggestions.length !== 0 && showSuggestions && (
-          <div className="suggestion bg-white rounded-xl shadow-lg border border-gray-100 py-3 w-52 absolute top-12 right-4">
+          <div className="suggestion bg-white rounded-xl shadow-lg border border-gray-100 py-3 w-[65vw] absolute top-12 right-[3%] z-30 sm:max-w-xs sm:-right-[12px] md:right-[35px]">
             <ul className="">
               {suggestions.map((suggestion) => (
                 <Link

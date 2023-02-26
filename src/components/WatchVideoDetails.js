@@ -44,7 +44,9 @@ const WatchVideoDetails = () => {
 
   return (
     <div className="px-2">
-      <h2 className="font-bold leading-none py-3 text-sm">{title}</h2>
+      <h2 className="font-bold leading-none py-3 text-sm lg:text-lg">
+        {title}
+      </h2>
 
       <div className="justify-between items-center">
         <div className="flex items-center justify-between pb-3">
@@ -54,9 +56,9 @@ const WatchVideoDetails = () => {
               src={channelDetails?.snippet?.thumbnails?.high?.url}
               alt="channel-profile"
             />
-            <ul className="">
-              <li className="font-bold text-xs">{channelTitle}</li>
-              <li className="text-gray-600 text-[10px]">
+            <ul className=" ">
+              <li className="font-bold text-xs lg:text-base">{channelTitle}</li>
+              <li className="text-gray-600 text-[10px] lg:text-xs">
                 {numberFormatter.format(
                   channelDetails?.statistics?.subscriberCount
                 )}{" "}
@@ -64,14 +66,14 @@ const WatchVideoDetails = () => {
               </li>
             </ul>
           </div>
-          <button className="bg-black text-white font-bold text-[10px] rounded-full py-1 px-2 hover:bg-neutral-800">
+          <button className="bg-black text-white font-bold text-[10px] rounded-full py-1 px-2 hover:bg-neutral-800 lg:text-sm lg:py-2 lg:px-3">
             Subscribe
           </button>
         </div>
 
         <div className="flex gap-2 text-[10px]">
           <div className="flex ">
-            <button className="bg-gray-100 text-black font-bold  rounded-l-full flex items-center px-2 py-1 hover:bg-gray-200 group gap-1">
+            <button className="bg-gray-100 text-black font-bold  rounded-l-full flex items-center px-2 py-1 hover:bg-gray-200 group gap-1 lg:text-sm lg:py-2 lg:px-3">
               <AiOutlineLike className="" />
               {numberFormatter.format(statistics.likeCount)}
               <span className="font-normal invisible group-hover:visible opacity-80 bg-gray-600 text-white block rounded-md absolute whitespace-nowrap z-20 -bottom-9 left-3">
@@ -79,28 +81,28 @@ const WatchVideoDetails = () => {
               </span>
             </button>
             {/* <div className="border-l border-gray-300 h-4 right-[26px] top-1 absolute"></div> */}
-            <button className="bg-gray-100 text-black font-bold  rounded-r-full hover:bg-gray-200 group  px-2 py-1">
+            <button className="bg-gray-100 text-black font-bold  rounded-r-full hover:bg-gray-200 group  px-2 py-1 lg:text-sm lg:py-2 lg:px-3">
               <AiOutlineDislike className="" />
               <span className="font-normal invisible group-hover:visible opacity-80 bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 -left-5">
                 I dislike this
               </span>
             </button>
           </div>
-          <button className="bg-gray-100 text-black font-bold rounded-full flex items-center gap-1 px-2 py-1 hover:bg-gray-200 group ">
+          <button className="bg-gray-100 text-black font-bold rounded-full flex items-center gap-1 px-2 py-1 hover:bg-gray-200 group lg:text-sm lg:py-2 lg:px-3">
             <RiShareForwardLine className="" />
             Share
             <span className="font-normal invisible group-hover:visible opacity-80 bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 right-6">
               Share
             </span>
           </button>
-          <button className="bg-gray-100 text-black font-bold rounded-full flex items-center hover:bg-gray-200 group  px-2 py-1 gap-1">
+          <button className="bg-gray-100 text-black font-bold rounded-full flex items-center hover:bg-gray-200 group  px-2 py-1 gap-1 lg:text-sm lg:py-2 lg:px-3">
             <TfiDownload className="" />
             Download
             <span className="font-normal invisible group-hover:visible opacity-80 bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap z-20 -bottom-9 right-7">
               Download
             </span>
           </button>
-          <button className="bg-gray-100 text-black font-bold rounded-full hover:bg-gray-200 px-2 py-1">
+          <button className="bg-gray-100 text-black font-bold rounded-full hover:bg-gray-200 px-2 py-1 lg:text-sm lg:py-2 lg:px-3">
             ···
           </button>
         </div>
@@ -108,7 +110,7 @@ const WatchVideoDetails = () => {
 
       <div
         className={
-          "bg-gray-100 mt-3 py-3 px-4 rounded-lg relative -z-10 hover:bg-gray-200 group " +
+          "bg-gray-100 mt-3 py-3 px-4 rounded-lg relative -z-10 lg:z-10 hover:bg-gray-200 group " +
           (!isVideoDescriptionVisible && "h-32 overflow-hidden pb-8")
         }
       >

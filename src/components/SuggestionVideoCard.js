@@ -6,9 +6,9 @@ const SuggestionVideoCard = ({ info }) => {
   const { channelTitle, title, thumbnails } = snippet;
 
   return (
-    <div className="flex h-24 mb-4">
+    <div className="flex h-24  mb-4">
       <img
-        className="rounded-lg"
+        className="rounded-lg w-44"
         src={
           thumbnails?.maxres?.url !== undefined
             ? thumbnails?.maxres?.url
