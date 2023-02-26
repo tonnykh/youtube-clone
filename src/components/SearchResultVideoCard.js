@@ -13,8 +13,8 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
   });
 
   return (
-    <div className=" m-4">
-      <div className="relative">
+    <div className="sm:flex m-4">
+      <div className="">
         <img
           src={
             thumbnails?.maxres === undefined
@@ -22,14 +22,14 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
               : thumbnails?.maxres?.url
           }
           alt="thumbnail"
-          className="rounded-2xl h-48 w-[341px] hover:shadow-xl "
+          className="rounded-2xl sm:min-w-[340px] sm:max-w-[340px] hover:shadow-xl "
         />
-        <p className="absolute px-1 right-2 bottom-2 opacity-80 bg-black text-white rounded-sm text-xs font-bold">
+        <p className=" px-1  top-[-20px] opacity-80 bg-black text-white rounded-sm text-xs font-bold w-max float-right relative right-1">
           {vidDuration(contentDetails.duration)}
         </p>
       </div>
       <div className="px-4 pt-2 text-xs">
-        <h2 className="font-bold">{title}</h2>
+        <h2 className="font-bold sm:text-base">{title}</h2>
         <ul className="">
           <li className="text-gray-600">
             <span> {numberFormatter.format(statistics.viewCount)} views</span>
@@ -40,18 +40,18 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
             </span>
           </li>
         </ul>
-        <div className="flex items-center">
+        <div className="flex items-center sm:py-3">
           <img
             className="w-7 h-7 rounded-full mr-2"
             src={channelThumbnail}
             alt="channel-thumbnail"
           />
-          <div className="text-xs">{channelTitle}</div>
+          <div className="text-xs sm:font-bold">{channelTitle}</div>
         </div>
-        {/* <div className="text-xs">
+        <div className="text-xs hidden md:block">
           {snippet.description.slice(0, 110) +
             (snippet.description.length > 110 ? "..." : "")}
-        </div> */}
+        </div>
       </div>
     </div>
   );

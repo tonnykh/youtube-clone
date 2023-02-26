@@ -98,7 +98,11 @@ const SearchResultVideoContainer = () => {
   }, []);
 
   return (
-    <div className={isMenuOpen ? "pointer-events-none blur-3xl fixed" : " "}>
+    <div
+      className={
+        isMenuOpen ? "pointer-events-none blur-3xl fixed" : "sm:ml-[10%]"
+      }
+    >
       {searchVideosResult.map((video, index) => (
         <Link key={video?.id + index} to={"/watch?v=" + video?.id}>
           <SearchResultVideoCard
