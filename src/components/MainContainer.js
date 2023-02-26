@@ -10,7 +10,7 @@ const MainContainer = () => {
   return (
 
     <div className={"ml-4 " +
-      (isMenuOpen ? "pointer-events-none blur-3xl fixed" : " ")}>
+      (isMenuOpen ? "pointer-events-none blur-3xl fixed " : " ")}>
       <ButtonList />
       <VideoContainer />
     </div>

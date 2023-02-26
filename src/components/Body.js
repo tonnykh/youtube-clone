@@ -8,7 +8,7 @@ const Body = () => {
   return (
     <div
       className={
-        "flex relative " + location.pathname === "/watch" ? "" : ""
+        "" + location.pathname === "/watch" ? "" : ""
       }
     >
       <Sidebar />

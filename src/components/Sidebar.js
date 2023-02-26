@@ -12,7 +12,7 @@ const Sidebar = () => {
   const [focusItem, setFocusItem] = useState("Home");
   const dispatch = useDispatch();
 
-  console.log(location, "LOCATION")
+  console.log(location, "LOCATION");
   console.log(isMenuOpen, "OPEN OR NOT");
 
   useEffect(() => {
@@ -36,10 +36,9 @@ const Sidebar = () => {
   return (
     <div
       className={
-        "sidebar bg-white overflow-y-auto h-screen fixed z-20 drop-shadow-lg pb-4 rounded-r-lg  " +
-        (isMenuOpen ? " pt-5 px-5 w-[250px] " : " w-0 sm:w-fit") + (
-          location.pathname === "/watch" ? "top-14" : ""
-        )
+        "sidebar bg-white overflow-y-auto max-h-[calc(100vh_-_3rem)] fixed z-20 drop-shadow-lg pb-4 rounded-r-lg " +
+        (isMenuOpen ? " pt-5 px-5 w-[250px] " : " w-0 sm:w-fit") +
+        (location.pathname === "/watch" ? "top-14" : "")
       }
     >
       {categories.map((item) => (
