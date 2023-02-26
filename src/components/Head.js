@@ -91,7 +91,7 @@ const Head = () => {
       }
     >
       <div className="flex items-center gap-1 py-3">
-        <div className="menu text-xs cursor-pointer hover:bg-gray-100 rounded-full p-3">
+        <div className="menu text-xs cursor-pointer hover:bg-gray-100 rounded-full p-3 sm:mx-3">
           <SlMenu
             onClick={() => toggleMenuHandler()}
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEX///8jHyAgHB0OBQgMAAWlpKQpJSaenZ309PUAAAAIAAD8/Pz5+fna2tqop6dvbW1oZmevrq4tKivFxMQYExRiYGC+vr7Dc4WrAAABB0lEQVR4nO3cS3LCMBAFQGIIIBPbhN/9jxqSyiIsTUnlydB9g1eSNV5MvdUKAAAAAAAAAAAAAAAAXtEwvscwDk3yHabSb2Loy/TRIOHUv8XRH+sHHMrSqR6U+hd1jHSE90P8lHC2/Lc0/0vzMy3WMdynxaFBwu+Jv4uh0cQHAAAAAAAAAIB59jG0ijdcT9sYTtcmK0PncumiuJRz/YD7bbf0ut4f3br+GvQt2PblrXrC3WbpUA/6sXrC/GeY/zvM/5aGmofHZiu0S//M/GoVDwAAAAAAAAAAZsjeuRerN1HL7hPy95fm76DNnzD/Lc3/0rxAJ3v+Xn0AAAAAAAAAAAAAAAD4T74AYhs1O+vt3ioAAAAASUVORK5CYII="
@@ -107,18 +107,18 @@ const Head = () => {
         </Link>
       </div>
 
-      <div className=" pt-[14.5px] w-2/5  relative">
-        <div className="flex items-center gap-2">
+      <div className=" pt-[14.5px] sm:py-[6.5px] w-2/5  relative">
+        <div className="flex items-center gap-2 sm:justify-center group/item  ">
           <form
-            className="flex border rounded-full focus-within:shadow-lg focus-within:absolute -right-[19%] bottom-[8.5px] bg-white group/item  "
+            className="flex border rounded-full focus-within:shadow-lg focus-within:absolute -right-[19%] bottom-[8.5px] bg-white focus-within:md:right-[0px]"
             ref={formRef}
           >
-            <div className="flex items-center focus-within:w-52">
+            <div className="flex items-center focus-within:w-[65vw] sm:max-w-xs ">
               <div className="pl-3 text-xl hidden group-focus-within/item:block ">
                 <IoIosSearch />
               </div>
               <input
-                className="outline-none ml-3 text-sm w-full"
+                className="peer outline-none ml-3 text-sm w-full lg:w-80"
                 type="text"
                 placeholder="Search"
                 value={searchQuery}
@@ -129,7 +129,11 @@ const Head = () => {
             </div>
 
             <Link to={"result?search_query=" + searchQuery}>
-              <button className="h-full self-center rounded-r-full border-l px-1 group-focus-within/item:p-2 bg-gray-50 hover:bg-gray-100 relative group">
+              <button
+                className="h-full self-center rounded-r-full border-l px-1 group-focus-within/item:p-2 bg-gray-50 hover:bg-gray-100 relative group"
+                // onChange={setShowSuggestions(false)}
+                // onSubmit={(e) => handleKeyDown(e)}
+              >
                 <IoIosSearch className="text-xl" />
                 <span className="invisible group-hover:visible  opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap left-[2px] -bottom-[39px]">
                   Search
@@ -137,7 +141,7 @@ const Head = () => {
               </button>
             </Link>
           </form>
-          <div className="hidden text-xl cursor-pointer hover:bg-gray-100 rounded-full p-3 relative inline-block group">
+          <div className="hidden sm:block text-xl cursor-pointer hover:bg-gray-100 rounded-full p-3 relative inline-block group sm:group-focus-within/item:hidden">
             <IoMdMic />
             <span className="invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap -left-full -bottom-9">
               Search with your voice
@@ -165,21 +169,21 @@ const Head = () => {
         )}
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="hidden text-xl cursor-pointer hover:bg-gray-100 rounded-full p-3 relative group">
+      <div className="flex items-center gap-1">
+        <div className="hidden sm:block text-xl cursor-pointer hover:bg-gray-100 rounded-full p-3 relative group">
           <RiVideoAddLine />
           <span className="invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap -left-[2px]  -bottom-9">
             Create
           </span>
         </div>
-        <div className="hidden text-xl cursor-pointer hover:bg-gray-100 rounded-full p-3 relative group">
+        <div className="hidden sm:block text-xl cursor-pointer hover:bg-gray-100 rounded-full p-3 relative group">
           <FiBell />
           <span className="invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap -right-1/2 -bottom-9">
             Notifications
           </span>
         </div>
         <img
-          className="w-6"
+          className="w-6 sm:mx-3 "
           src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
           alt="user"
         ></img>

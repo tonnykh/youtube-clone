@@ -69,7 +69,7 @@ const VideoContainer = () => {
   if (videos === undefined && channelThumbnailList.length === 0) return null;
 
   return (
-    <div className="">
+    <div className=" flex flex-wrap sm:grid sm:grid-cols-2 min-[875px]:grid-cols-3 lg:grid-cols-4 sm:px-2">
       {videos.map((video, index) => (
         <Link key={video?.id} to={"/watch?v=" + video?.id}>
           <VideoCard

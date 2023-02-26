@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import SearchResultVideoCard from "./SearchResultVideoCard";
+import { useSelector } from "react-redux";
 import {
   YOUTUBE_SEARCH_VIDEO_API,
   YOUTUBE_SEARCH_VIDEO_ID_API,
@@ -16,6 +17,7 @@ const SearchResultVideoContainer = () => {
   const [page, setPage] = useState(1);
   const [channelIdList, setChannelIdList] = useState([]);
   const [channelThumbnailList, setChannelThumbnailList] = useState([]);
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   console.log(videoIdList, page, "LIST");
   console.log(searchVideosResult, "VIDEO SEARCH RESULTS");
@@ -96,7 +98,7 @@ const SearchResultVideoContainer = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className={isMenuOpen ? "pointer-events-none blur-3xl fixed" : " "}>
       {searchVideosResult.map((video, index) => (
         <Link key={video?.id + index} to={"/watch?v=" + video?.id}>
           <SearchResultVideoCard

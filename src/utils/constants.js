@@ -32,7 +32,7 @@ export const categories = [
   { name: "Send feedback", icon: <RiFeedbackLine />, type: "menu" },
 ];
 
-const GOOGLE_API_KEY = "AIzaSyDLuS3H9JYoVeVdfKizmtIC0py-QF4Z80s";
+const GOOGLE_API_KEY = "AIzaSyASMnObZc7n08rqaYmEN0EnDQlUsgnZdNA";
 
 export const LIVE_CHAT_COUNT = 10;
 

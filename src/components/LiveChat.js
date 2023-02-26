@@ -59,7 +59,7 @@ const LiveChatInput = () => {
 };
 
 const LiveChat = () => {
-  const [isLiveMessageVisible, setIsLiveMessageVisible] = useState(true);
+  const [isLiveMessageVisible, setIsLiveMessageVisible] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -6,17 +6,19 @@ import SuggestionVideoContainer from "./SuggestionVideoContainer";
 import WatchVideoDetails from "./WatchVideoDetails";
 import CommentsContainer from "./CommentsContainer ";
 import LiveChat from "./LiveChat";
+import { useSelector } from "react-redux";
 
 const WatchPage = () => {
   let [searchParams] = useSearchParams();
   const dispatch = useDispatch();
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   useEffect(() => {
     dispatch(closeMenu());
   }, []);
 
   return (
-    <div className="  ">
+    <div className={isMenuOpen ? "pointer-events-none blur-3xl fixed" : " "}>
       <div>
         <div className="sticky top-14">
           <iframe
