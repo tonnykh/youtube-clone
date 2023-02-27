@@ -1,33 +1,34 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Button from "./Button";
 
 const list = [
   "All",
-  "Comedy",
-  "Sitcoms",
-  "Gaming",
-  "News",
-  "Live",
-  "Wickets",
-  "Arijit Singh",
-  "Bollywood Music",
-  "Animated films",
-  "Cricket",
+  "Dan Abramov",
+  "React js",
+  "Redux",
+  "Bundler",
+  "Debouncing",
+  "Tailwind",
+  "Web Developer",
+  "Hooks",
+  "Component",
+  "Akshay Saini OP",
+  "npm",
+  "Infinite Scroll",
+  "Cache",
+  "Live chat"
 ];
 
 const ButtonList = () => {
-  const isButtonListVisible = useSelector(
-    (store) => store.app.isButtonListVisible
-  );
-
-  if (!isButtonListVisible) return;
+  const renderButtons = () => {
+    return list.map((name, index) => (
+      <Button name={name} key={name} index={index} />
+    ));
+  };
 
   return (
-    <div className="sticky top-[55px] bg-white mr-4 flex overflow-x-scroll w-[calc(100vw_-_20px)] text-sm relative z-10 sm:w-[calc(100vw_-_30px)] sm:pl-16">
-      {list.map((each, index) => (
-        <Button name={each} key={each} index={index} />
-      ))}
+    <div className="sticky top-[55px] bg-white mr-4 flex overflow-x-scroll w-[calc(100vw_-_20px)] text-sm z-10 sm:w-[calc(100vw_-_30px)] sm:pl-16">
+      {renderButtons()}
     </div>
   );
 };

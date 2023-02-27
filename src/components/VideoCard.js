@@ -3,20 +3,22 @@ import { numberFormatter, dateDiff, vidDuration } from "../utils/helper";
 
 const VideoCard = ({ info, channelThumbnail }) => {
   if (info === undefined) return null;
-  console.log(info, "INFO");
 
   const { snippet, statistics, contentDetails } = info;
   const { channelTitle, title, thumbnails } = snippet;
+
+  const getThumbnailUrl = () => {
+    if (thumbnails.maxres?.url) {
+      return thumbnails.maxres.url;
+    }
+    return thumbnails.high?.url;
+  };
 
   return (
     <div className="p-2 hover:shadow-lg rounded-lg ">
       <img
         className=" rounded-lg "
-        src={
-          thumbnails?.maxres?.url !== undefined
-            ? thumbnails?.maxres?.url
-            : thumbnails?.high?.url
-        }
+        src={getThumbnailUrl()}
         alt="video-thumbnail"
       />
       <p className=" px-1  top-[-20px] opacity-80 bg-black text-white rounded-sm text-xs font-bold w-max float-right relative right-1">

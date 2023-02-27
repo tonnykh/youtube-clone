@@ -29,14 +29,17 @@ const SearchContainer = () => {
   };
 
   /**
+   * Make an API call after every key press
    * Applying Debouncing with 200ms
    *    - if difference between 2 key strokes is :
    *        - less than < 200ms - DECLINE API call
    *        - more than > 200ms - make an API call if the searchQuery is not available at searchCache.
    **/
-  // Updates suggestions if the search query has changed
+  
   useEffect(() => {
+    
     const timer = setTimeout(() => {
+      console.log("API");
       if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
       } else {
