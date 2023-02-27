@@ -5,8 +5,6 @@ const CommentList = ({ comments }) => {
   const [visibleReply, setVisibleReply] = useState("");
   if (comments === undefined) return;
 
-  console.log(comments, "COMMENTS");
-
   return comments.map((comment) => (
     <div key={comment.id} className="my-2 max-w-[85vw]">
       <Comment

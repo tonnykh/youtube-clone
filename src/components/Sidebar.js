@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+
 import { categories } from "../utils/constants";
 import SidebarItem from "./SidebarItem";
 import { toggleMenu } from "../utils/appSlice";

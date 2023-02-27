@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LiveChatMessage from "./LiveChatMessage";
 import { addMessage } from "../utils/chatSlice";
 import { faker } from "@faker-js/faker";
+import LiveChatMessage from "./LiveChatMessage";
 
 const LiveChatList = () => {
   const chatMessages = useSelector((store) => store.chat.messages);
@@ -79,7 +79,6 @@ const LiveChat = () => {
 
   const handleChatDisplay = () => {
     setIsLiveMessageVisible(!isLiveMessageVisible);
-    console.log("click");
   };
 
   return (

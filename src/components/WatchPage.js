@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { closeMenu } from "../utils/appSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+
+import { closeMenu } from "../utils/appSlice";
 import SuggestionVideoContainer from "./SuggestionVideoContainer";
-import WatchVideoDetails from "./WatchVideoDetails";
+import WatchVideoDetails from "./WatchVideoDetailsContainer";
 import CommentsContainer from "./CommentsContainer ";
 import LiveChat from "./LiveChat";
-import { useSelector } from "react-redux";
+
 
 const WatchPage = () => {
   let [searchParams] = useSearchParams();
@@ -15,7 +16,7 @@ const WatchPage = () => {
 
   useEffect(() => {
     dispatch(closeMenu());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={isMenuOpen ? "pointer-events-none blur-3xl fixed" : " "}>

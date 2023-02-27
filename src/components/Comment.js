@@ -3,9 +3,9 @@ import { numberFormatter, dateDiff } from "../utils/helper";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 
-
 const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
   if (data === undefined) return;
+  
   const {
     authorDisplayName,
     authorProfileImageUrl,
@@ -46,7 +46,7 @@ const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
                 className="font-bold text-blue-600 text-sm hover:bg-blue-100 px-3 py-2 rounded-full flex gap-1"
                 onClick={() => setVisibleReply(false)}
               >
-                <BiCaretUp className="text-xl"/>
+                <BiCaretUp className="text-xl" />
                 {replyCount} replies
               </button>
             ) : (
@@ -54,8 +54,8 @@ const Comment = ({ data, replyCount, isVisible, setVisibleReply, id }) => {
                 className="font-bold text-blue-600 text-sm hover:bg-blue-100 px-3 py-2 rounded-full flex gap-1"
                 onClick={() => setVisibleReply(id)}
               >
-                <BiCaretDown className="text-xl"/>
-                {replyCount} replies 
+                <BiCaretDown className="text-xl" />
+                {replyCount} replies
               </button>
             )}
           </li>

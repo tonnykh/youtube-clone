@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
-import { Link } from "react-router-dom";
 import { IoIosSearch, IoMdMic } from "react-icons/io";
 import SearchInput from "./SearchInput";
 import SuggestionsDropdown from "./SuggestionsDropdown";

@@ -4,15 +4,14 @@ import { YOUTUBE_COMMENTS_API } from "../utils/constants";
 import CommentList from "./CommentList";
 
 const CommentsContainer = () => {
-  let [searchParams] = useSearchParams();
-  const videoId = searchParams.get("v");
   const [comments, setComments] = useState([]);
   const [nextToken, setNextToken] = useState("");
-  const [page, setPage] = useState(1);
+  let [searchParams] = useSearchParams();
+  const videoId = searchParams.get("v");
 
   useEffect(() => {
     getComments(videoId);
-  }, [videoId, page]);
+  }, [videoId]);
 
   const getComments = async () => {
     const data = await fetch(YOUTUBE_COMMENTS_API(videoId, nextToken));
@@ -21,19 +20,6 @@ const CommentsContainer = () => {
     setComments(newComments);
     setNextToken(json.nextPageToken);
   };
-
-  // useEffect(() => {
-  //   function handleScroll() {
-  //     const isBottom =
-  //       window.innerHeight + window.scrollY >=
-  //       document.documentElement.scrollHeight;
-  //     if (isBottom) {
-  //       setPage((prevPage) => prevPage + 1);
-  //     }
-  //   }
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
 
   if (comments === undefined) return null;
 
