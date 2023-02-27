@@ -19,10 +19,7 @@ const SearchResultVideoContainer = () => {
   const [channelThumbnailList, setChannelThumbnailList] = useState([]);
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
-  console.log(videoIdList, page, "LIST");
-  console.log(searchVideosResult, "VIDEO SEARCH RESULTS");
-
-  /** Reset when Search query change **/
+  /** Reset states when search query changes **/
   useEffect(() => {
     setSearchVideosResult([]);
     setVideoIdList([]);
@@ -63,7 +60,7 @@ const SearchResultVideoContainer = () => {
     setChannelIdList(json.items?.map((video) => video?.snippet?.channelId));
   };
 
-  /** channel thumbnail */
+  /** Get channel thumbnail */
   useEffect(() => {
     if (channelIdList.length > 0) {
       getChannelDetails();
@@ -80,10 +77,8 @@ const SearchResultVideoContainer = () => {
     );
   };
 
-  /** Is bottom ? **/
+  /** Is scroll bottom ? **/
   useEffect(() => {
-    console.log("CALL API -- 3");
-
     function handleScroll() {
       const isBottom =
         window.innerHeight + window.scrollY >=

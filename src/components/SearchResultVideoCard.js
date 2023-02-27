@@ -12,6 +12,30 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
     dispatch(closeButtonList());
   });
 
+  const renderDescription = () => {
+    const { description } = info.snippet;
+    const maxLength = 110;
+    if (description.length > maxLength) {
+      return `${description.slice(0, maxLength)}...`;
+    }
+    return description;
+  };
+
+  const renderDuration = () => {
+    const { duration } = info.contentDetails;
+    return vidDuration(duration);
+  };
+
+  const renderViewCount = () => {
+    const { viewCount } = info.statistics;
+    return numberFormatter.format(viewCount);
+  };
+
+  const renderPublishedAt = () => {
+    const { publishedAt } = info.snippet;
+    return dateDiff(publishedAt);
+  };
+
   return (
     <div className="sm:flex m-4">
       <div className="">
@@ -25,18 +49,17 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
           className="rounded-2xl sm:min-w-[340px] sm:max-w-[340px] hover:shadow-xl "
         />
         <p className=" px-1  top-[-20px] opacity-80 bg-black text-white rounded-sm text-xs font-bold w-max float-right relative right-1">
-          {vidDuration(contentDetails.duration)}
+          {renderDuration()}
         </p>
       </div>
       <div className="px-4 pt-2 text-xs">
         <h2 className="font-bold sm:text-base">{title}</h2>
         <ul className="">
           <li className="text-gray-600">
-            <span> {numberFormatter.format(statistics.viewCount)} views</span>
+            <span> {renderViewCount()} views</span>
             <span>
               {" "}
-              <span className="font-bold">·</span>{" "}
-              {dateDiff(snippet.publishedAt)}
+              <span className="font-bold">·</span> {renderPublishedAt()}
             </span>
           </li>
         </ul>
@@ -48,10 +71,7 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
           />
           <div className="text-xs sm:font-bold">{channelTitle}</div>
         </div>
-        <div className="text-xs hidden md:block">
-          {snippet.description.slice(0, 110) +
-            (snippet.description.length > 110 ? "..." : "")}
-        </div>
+        <div className="text-xs hidden md:block">{renderDescription()}</div>
       </div>
     </div>
   );
