@@ -36,7 +36,7 @@ const Sidebar = () => {
   return (
     <div
       className={
-        "sidebar bg-white overflow-y-auto max-h-[calc(100vh_-_3rem)] fixed z-20 drop-shadow-lg pb-4 rounded-r-lg " +
+        "sidebar bg-white overflow-y-auto max-h-[calc(100vh_-_3rem)] fixed z-20 drop-shadow-lg pb-4 rounded-r-lg sm:drop-shadow-none sm:pr-3 sm:pl-1 " +
         (isMenuOpen ? " pt-5 px-5 w-[250px] " : " w-0 sm:w-fit") +
         (location.pathname === "/watch" ? "top-14" : "")
       }

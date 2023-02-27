@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import Head from "./components/Head";
+import Header from "./components/Header";
 import Body from "./components/Body";
 import { Provider } from "react-redux";
 import store from "./utils/store";
@@ -12,26 +12,26 @@ import SearchResultPage from "./components/SearchResultVideoContainer";
 const AppLayout = () => {
   return (
     <Provider store={store}>
-      {/* <div> */}
-        <Head />
-        <Body />
-
-        {/**
-         *
-         *
-         *
-         * Head
-         * Body
-         *  Sidebar
-         *    ItemList
-         *  MainContainer
-         *    ButtonList
-         *    VideoContainer
-         *       VideCard
-         *
-         *
-         */}
-      {/* </div> */}
+      {/**
+       *
+       *
+       *
+       * Header
+       *  SearchContainer
+       *    SearchInput
+       *    SuggestionsDropdown
+       * Body
+       *  Sidebar
+       *    ItemList
+       *  MainContainer
+       *    ButtonList
+       *    VideoContainer
+       *       VideCard
+       *
+       *
+       */}
+      <Header />
+      <Body />
     </Provider>
   );
 };
@@ -41,24 +41,6 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     children: [
-      
-        // path: "/",
-        // element: <Body />,
-        // children: [
-          // {
-          //   path: "/",
-          //   element: <MainContainer />,
-          // },
-          // {
-          //   path: "watch",
-          //   element: <WatchPage />,
-          // },
-          // {
-          //   path: "result",
-          //   element: <SearchResultPage />,
-          // },
-        // ],
-      
       {
         path: "/",
         element: <MainContainer />,

@@ -24,7 +24,7 @@ const ButtonList = () => {
   if (!isButtonListVisible) return;
 
   return (
-    <div className="sticky top-[55px] bg-white mr-4 flex overflow-x-scroll w-[calc(100vw_-_20px)] text-sm relative z-10 sm:w-[calc(100vw_-_30px)] ">
+    <div className="sticky top-[55px] bg-white mr-4 flex overflow-x-scroll w-[calc(100vw_-_20px)] text-sm relative z-10 sm:w-[calc(100vw_-_30px)] sm:pl-16">
       {list.map((each, index) => (
         <Button name={each} key={each} index={index} />
       ))}
