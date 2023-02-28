@@ -36,9 +36,8 @@ const SearchContainer = () => {
    *        - less than < 200ms - DECLINE API call
    *        - more than > 200ms - make an API call if the searchQuery is not available at searchCache.
    **/
-  
+
   useEffect(() => {
-    
     const timer = setTimeout(() => {
       console.log("API");
       if (searchCache[searchQuery]) {
@@ -71,7 +70,11 @@ const SearchContainer = () => {
 
   // Close the suggestion dropdown if the user clicks "Enter" in the search input form
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") setShowSuggestions(false);
+    console.log("Enter");
+    if (e.key === "Enter") {
+      setShowSuggestions(false);
+      e.target.blur();
+    }
   };
 
   const handleSuggestionClick = (suggestion) => {
@@ -85,6 +88,11 @@ const SearchContainer = () => {
         <form
           className="flex border rounded-full focus-within:shadow-lg focus-within:absolute -right-[19%] bottom-[8.5px] bg-white focus-within:md:right-[0px]"
           ref={searchFormRef}
+          onSubmit={(e) => {
+            console.log("Search");
+            e.preventDefault();
+            setSearchQuery("");
+          }}
         >
           <SearchInput
             searchQuery={searchQuery}

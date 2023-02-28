@@ -16,9 +16,6 @@ const VideoContainer = () => {
   const [channelIdList, setChannelIdList] = useState([]);
   const [channelThumbnailList, setChannelThumbnailList] = useState([]);
 
-  // console.log(channelThumbnailList, "CHANNEL THUMB NAIL LIST");
-  console.log(channelIdList, "CHANNEL ID LIST");
-
   useEffect(() => {
     getVideos();
   }, [page]);
