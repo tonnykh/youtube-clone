@@ -6,6 +6,7 @@ const SearchInput = ({
   setSearchQuery,
   setShowSuggestions,
   handleKeyDown,
+  onBlur
 }) => {
   return (
     <div className="flex items-center focus-within:w-[65vw] sm:max-w-xs ">
@@ -20,6 +21,7 @@ const SearchInput = ({
         onChange={(e) => setSearchQuery(e.target.value)}
         onFocus={() => setShowSuggestions(true)}
         onKeyDown={handleKeyDown}
+        onBlur={onBlur}
       />
     </div>
   );

@@ -78,6 +78,10 @@ const SearchContainer = () => {
     }
   };
 
+  const onBlur = () => {
+   setShowSuggestions(false); 
+  }
+
   const handleSuggestionClick = (suggestion) => {
     setSearchQuery(suggestion);
     setShowSuggestions(false);
@@ -95,6 +99,7 @@ const SearchContainer = () => {
             setSearchQuery={setSearchQuery}
             setShowSuggestions={setShowSuggestions}
             handleKeyDown={handleKeyDown}
+            onBlur={onBlur}
           />
           <Link to={"result?search_query=" + searchQuery}>
             <button className="h-full self-center rounded-r-full border-l px-1 group-focus-within/item:p-2 bg-gray-50 hover:bg-gray-100 relative group md:px-3">
