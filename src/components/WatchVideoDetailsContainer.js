@@ -78,7 +78,7 @@ const WatchVideoDetailsContainer = () => {
         />
         <input
           type="text"
-          className="border-b border-gray-300 outline-none focus:border-black w-full self-baseline text-sm py-1 placeholder:text-gray-600"
+          className="border-b border-gray-300 outline-none focus:border-black w-full self-baseline py-1 placeholder:text-gray-600"
           placeholder="Add a comment..."
         />
       </div>

@@ -70,10 +70,11 @@ const SearchContainer = () => {
 
   // Close the suggestion dropdown if the user clicks "Enter" in the search input form
   const handleKeyDown = (e) => {
-    console.log("Enter");
     if (e.key === "Enter") {
       setShowSuggestions(false);
-      e.target.blur();
+      setTimeout(() => {
+        e.target.blur();
+      }, 100);
     }
   };
 
@@ -88,11 +89,6 @@ const SearchContainer = () => {
         <form
           className="flex border rounded-full focus-within:shadow-lg focus-within:absolute -right-[19%] bottom-[8.5px] bg-white focus-within:md:right-[0px]"
           ref={searchFormRef}
-          onSubmit={(e) => {
-            console.log("Search");
-            e.preventDefault();
-            setSearchQuery("");
-          }}
         >
           <SearchInput
             searchQuery={searchQuery}
