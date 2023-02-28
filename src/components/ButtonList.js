@@ -27,7 +27,7 @@ const ButtonList = () => {
   };
 
   return (
-    <div className="sticky top-[55px] bg-white mr-4 flex overflow-x-scroll w-[calc(100vw_-_20px)] text-sm z-10 sm:w-[calc(100vw_-_30px)] sm:pl-16">
+    <div className="sticky top-[55px] bg-white mr-4 flex overflow-x-scroll w-[calc(100vw_-_20px)] text-sm z-10 sm:w-[calc(100vw_-_30px)] sm:pl-20">
       {renderButtons()}
     </div>
   );

@@ -16,6 +16,9 @@ const VideoContainer = () => {
   const [channelIdList, setChannelIdList] = useState([]);
   const [channelThumbnailList, setChannelThumbnailList] = useState([]);
 
+  // console.log(channelThumbnailList, "CHANNEL THUMB NAIL LIST");
+  console.log(channelIdList, "CHANNEL ID LIST");
+
   useEffect(() => {
     getVideos();
   }, [page]);
@@ -24,9 +27,7 @@ const VideoContainer = () => {
     const data = await fetch(YOUTUBE_VIDEOS_API(nextToken));
     const json = await data.json();
     setVideos([...videos, ...json.items]);
-
     setChannelIdList(json.items?.map((video) => video?.snippet?.channelId));
-
     setNextToken(json.nextPageToken);
   };
 
@@ -41,9 +42,10 @@ const VideoContainer = () => {
       YOUTUBE_CHANNEL_DETAILS_API(channelIdList.toString())
     );
     const json = await data.json();
-    setChannelThumbnailList(
-      json.items?.map((channel) => channel?.snippet?.thumbnails?.high?.url)
-    );
+    setChannelThumbnailList([
+      ...channelThumbnailList,
+      ...json.items?.map((channel) => channel?.snippet?.thumbnails?.high?.url),
+    ]);
   };
 
   useEffect(() => {
@@ -63,7 +65,7 @@ const VideoContainer = () => {
   if (videos === undefined && channelThumbnailList.length === 0) return null;
 
   return (
-    <div className="  sm:grid sm:grid-cols-2 min-[875px]:grid-cols-3 lg:grid-cols-4 sm:px-2 sm:ml-14">
+    <div className="sm:grid sm:grid-cols-2 min-[875px]:grid-cols-3 lg:grid-cols-4 sm:px-2 sm:ml-16">
       {videos.map((video, index) => (
         <Link key={video?.id} to={"/watch?v=" + video?.id}>
           <VideoCard

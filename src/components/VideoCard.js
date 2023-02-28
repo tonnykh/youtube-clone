@@ -15,7 +15,7 @@ const VideoCard = ({ info, channelThumbnail }) => {
   };
 
   return (
-    <div className="p-2 hover:shadow-lg rounded-lg ">
+    <div className="p-2 hover:shadow-lg rounded-lg sm:m-2">
       <img
         className=" rounded-lg "
         src={getThumbnailUrl()}

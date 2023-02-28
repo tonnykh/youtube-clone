@@ -39,7 +39,7 @@ export const LIVE_CHAT_COUNT = 10;
 export const YOUTUBE_VIDEOS_API = (nextToken) =>
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&pageToken=" +
   nextToken +
-  "&maxResults=6&regionCode=IN&key=" +
+  "&maxResults=10&regionCode=IN&key=" +
   GOOGLE_API_KEY;
 
 export const YOUTUBE_SEARCH_API =
