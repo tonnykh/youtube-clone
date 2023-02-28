@@ -93,7 +93,7 @@ const SearchContainer = () => {
             handleKeyDown={handleKeyDown}
           />
           <Link to={"result?search_query=" + searchQuery}>
-            <button className="h-full self-center rounded-r-full border-l px-1 group-focus-within/item:p-2 bg-gray-50 hover:bg-gray-100 relative group">
+            <button className="h-full self-center rounded-r-full border-l px-1 group-focus-within/item:p-2 bg-gray-50 hover:bg-gray-100 relative group md:px-3">
               <IoIosSearch className="text-xl" />
               <span className="invisible group-hover:visible  opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap left-[2px] -bottom-[39px]">
                 Search
@@ -101,7 +101,7 @@ const SearchContainer = () => {
             </button>
           </Link>
         </form>
-        <div className="hidden sm:block text-xl cursor-pointer hover:bg-gray-100 rounded-full p-3 relative  group sm:group-focus-within/item:hidden">
+        <div className="hidden sm:block text-xl cursor-pointer hover:bg-gray-100 rounded-full p-3 relative  group sm:group-focus-within/item:hidden ">
           <IoMdMic />
           <span className="invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap -left-full -bottom-9">
             Search with your voice

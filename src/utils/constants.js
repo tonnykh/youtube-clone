@@ -46,7 +46,7 @@ export const YOUTUBE_SEARCH_API =
   "https://cors-anywhere.herokuapp.com/http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const YOUTUBE_SEARCH_VIDEO_ID_API = (search, nextToken) =>
-  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=" +
+  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=" +
   search +
   "&pageToken=" +
   nextToken +
@@ -60,7 +60,7 @@ export const YOUTUBE_SEARCH_VIDEO_API = (videoIdList) =>
   GOOGLE_API_KEY;
 
 export const YOUTUBE_RELATED_VIDEOS_ID_API = (videoId) =>
-  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&relatedToVideoId=" +
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&relatedToVideoId=" +
   videoId +
   "&type=video&key=" +
   GOOGLE_API_KEY;

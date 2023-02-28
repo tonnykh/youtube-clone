@@ -72,9 +72,10 @@ const SearchResultVideoContainer = () => {
       YOUTUBE_CHANNEL_DETAILS_API(channelIdList.toString())
     );
     const json = await data.json();
-    setChannelThumbnailList(
-      json.items?.map((channel) => channel?.snippet?.thumbnails?.high?.url)
-    );
+    setChannelThumbnailList([
+      ...channelThumbnailList,
+      ...json.items?.map((channel) => channel?.snippet?.thumbnails?.high?.url),
+    ]);
   };
 
   /** Is scroll bottom ? **/

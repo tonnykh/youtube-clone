@@ -13,7 +13,7 @@ const SearchInput = ({
         <IoIosSearch />
       </div>
       <input
-        className="peer outline-none ml-3 text-sm w-full lg:w-80"
+        className="peer outline-none ml-3 text-sm w-full lg:w-80 md:py-2"
         type="text"
         placeholder="Search"
         value={searchQuery}
