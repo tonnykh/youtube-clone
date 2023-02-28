@@ -39,6 +39,7 @@ const AppLayout = () => {
 const appRouter = createBrowserRouter([
   {
     path: "/",
+    basename: "/youtube-clone",
     element: <AppLayout />,
     children: [
       {

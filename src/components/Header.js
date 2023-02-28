@@ -56,12 +56,18 @@ const Header = () => {
             Notifications
           </span>
         </div>
-        <div className=" relative group">
-          <AiFillGithub className="text-3xl transition hover:rotate-[360deg] hover:ease-in hover:duration-500  hover:scale-150 cursor-pointer hover:text-red-600" />
-          <span className="invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap -right-1/2 -bottom-9">
-            Created by Tonny kh © 2023
-          </span>
-        </div>
+        <Link
+          to="https://github.com/tonnykh/youtube-clone"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className=" relative group">
+            <AiFillGithub className="text-3xl transition hover:rotate-[360deg] hover:ease-in hover:duration-500  hover:scale-150 cursor-pointer hover:text-red-600" />
+            <span className="invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap -right-1/2 -bottom-9">
+              Created by Tonny kh © 2023
+            </span>
+          </div>
+        </Link>
       </div>
     </div>
   );
