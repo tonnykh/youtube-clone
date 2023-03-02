@@ -1,7 +1,7 @@
 <div align="center">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png"  width="100" alt="logo"/>
     <h1><a href="https://youtube-clone-tonnykh.vercel.app/">React YouTube Clone</a></h1>
-  <p>A React YouTube Clone app where you can watch and search any videos which are available on YouTube, also you can add a comment on live chat.</p>
+  <p>A React YouTube Clone app where you can watch and search any videos available on YouTube, also you can add comment on Live Chat.</p>
 </div>
 
 ## 🔴 Demo
@@ -22,10 +22,10 @@
 
 ## Features
 
-- Debouncing with 200ms, improving the "🔍search" by reducing the API call on frequent key press.
-- Cached the searched results using Redux store to decrease no of API calls.
+- Debouncing with 200ms, improving the "🔍search" by reducing the API calls on frequent key press.
+- Cached the search results using the Redux store to reduce the number of API calls.
 - 1-level nested comments💬 using the concept of "Recursion".
-- Implemented Live Chat ✅, using the concept of API polling after every 1500ms and decreased website load by removing old chats present in the redux store.
+- Implemented Live Chat 🟢, using the concept of API polling after every 1500ms and decreased website load by removing old chats present in the redux store.
 - Powered the data layer with Youtube's Live API.
 - Infinite Scroll on Home page.
 - Full Responsive design.

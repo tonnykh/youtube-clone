@@ -8,6 +8,8 @@ const SearchResultVideoCard = ({ info, channelThumbnail }) => {
   const { channelTitle, title, thumbnails } = snippet;
   const dispatch = useDispatch();
 
+  console.log(channelThumbnail, "CHANNEL THUMBNAILS");
+
   useEffect(() => {
     dispatch(closeButtonList());
   });
