@@ -26,6 +26,7 @@
 - Cached the search results using the Redux store to reduce the number of API calls.
 - 1-level nested comments💬 using the concept of "Recursion".
 - Implemented Live Chat 🟢, using the concept of API polling after every 1500ms and decreased website load by removing old chats present in the redux store.
+- Applied logical bundling (chunking) to optimized the app with faster initial load time.
 - Powered the data layer with Youtube's Live API.
 - Infinite Scroll on Home page.
 - Full Responsive design.
