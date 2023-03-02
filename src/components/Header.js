@@ -11,6 +11,7 @@ import ytLogo from "../assets/img/yt-logo.png";
 import menuImg from "../assets/img/menu.png";
 import userIcon from "../assets/img/user-icon.png";
 import SearchContainer from "./SearchContainer";
+import { GITHUB_LINK } from "../utils/constants";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -28,9 +29,12 @@ const Header = () => {
         (isMenuOpen ? "" : " z-10")
       }
     >
-      <div className="flex items-center gap-1 py-3 ">
-        <div className="menu text-xs md:text-base cursor-pointer hover:bg-gray-100 rounded-full p-3 ">
-          <SlMenu onClick={() => toggleMenuHandler()} src={menuImg} />
+      <div className="flex items-center gap-2 py-3 ">
+        <div
+          className="menu text-xs md:text-base cursor-pointer hover:bg-gray-100 rounded-full p-3 "
+          onClick={() => toggleMenuHandler()}
+        >
+          <SlMenu src={menuImg} />
         </div>
         <Link to="/">
           <img
@@ -56,11 +60,7 @@ const Header = () => {
             Notifications
           </span>
         </div>
-        <Link
-          to="https://github.com/tonnykh/youtube-clone"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link to={GITHUB_LINK} target="_blank" rel="noopener noreferrer">
           <div className=" relative group">
             <AiFillGithub className="text-3xl transition hover:rotate-[360deg] hover:ease-in hover:duration-500  hover:scale-150 cursor-pointer hover:text-gray-700" />
             <span className="invisible group-hover:visible opacity-80 text-xs bg-gray-600 text-white block p-2 rounded-md absolute whitespace-nowrap -right-1/2 -bottom-9">

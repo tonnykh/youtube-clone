@@ -32,14 +32,14 @@ export const categories = [
   { name: "Send feedback", icon: <RiFeedbackLine />, type: "menu" },
 ];
 
-const GOOGLE_API_KEY = "AIzaSyASMnObZc7n08rqaYmEN0EnDQlUsgnZdNA";
+const GOOGLE_API_KEY = "AIzaSyATlF26iF-kjV4MgmcSCtZpAJDyrHFe_J8";
 
 export const LIVE_CHAT_COUNT = 10;
 
 export const YOUTUBE_VIDEOS_API = (nextToken) =>
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&pageToken=" +
   nextToken +
-  "&maxResults=10&regionCode=IN&key=" +
+  "&maxResults=12&regionCode=IN&key=" +
   GOOGLE_API_KEY;
 
 export const YOUTUBE_SEARCH_API =
@@ -84,3 +84,5 @@ export const YOUTUBE_COMMENTS_API = (videoId, nextToken) =>
   nextToken +
   "&prettyPrint=true&key=" +
   GOOGLE_API_KEY;
+
+export const GITHUB_LINK = "https://github.com/tonnykh/youtube-clone";

@@ -79,8 +79,10 @@ const SearchContainer = () => {
   };
 
   const onBlur = () => {
-   setShowSuggestions(false); 
-  }
+    setTimeout(() => {
+      setShowSuggestions(false);
+    }, 100);
+  };
 
   const handleSuggestionClick = (suggestion) => {
     setSearchQuery(suggestion);
