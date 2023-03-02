@@ -1,6 +1,6 @@
 <div align="center">
-    <a href="https://youtube-clone-tonnykh.vercel.app/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png"  width="50" alt="logo"/>
-    <h1>React YouTube Clone</h1></a>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png"  width="100" alt="logo"/>
+    <h1><a href="https://youtube-clone-tonnykh.vercel.app/">React YouTube Clone</a></h1>
   <p>A React YouTube Clone app where you can watch and search any videos which are available on YouTube, also you can add a comment on live chat.</p>
 </div>
 
@@ -29,7 +29,6 @@
 - Powered the data layer with Youtube's Live API.
 - Infinite Scroll on Home page.
 - Full Responsive design.
-
 
 ## Screenshots
 
@@ -72,3 +71,10 @@
 ## Mobile Watch Page
 
 <img width="319" alt="Screenshot 2023-03-02 at 4 53 37 PM" src="https://user-images.githubusercontent.com/40168058/222415424-1cf833e1-bd9e-409d-8b7d-2bd457f2a52b.png">
+
+## 👨‍💻 Connect with me
+
+You can reach me through below handles.
+
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](http://discordapp.com/users/1013858160110485655)
+[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kh-tonny)
